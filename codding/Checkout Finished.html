@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>GoToBusTour</title>
+<link href="css/general.css" type="text/css" rel="stylesheet" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link type="image/x-icon" rel="shortcut icon" href="http://www.yibada.com/clients/GoToBusTours/images/favicon.ico"/>
+<link href="images/favicon.ico" rel="shortcut icon">
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+
+
+<script>
+function drop_mouseover(pos){
+ try{window.clearTimeout(timer);}catch(e){}
+}
+function drop_mouseout(pos){
+ var posSel=document.getElementById(pos+"Sel").style.display;
+ if(posSel=="block"){
+  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+ }
+}
+function drop_hide(pos){
+ document.getElementById(pos+"Sel").style.display="none";
+}
+function search_show(pos,searchType,href){
+    document.getElementById(pos+"SearchType").value=searchType;
+    document.getElementById(pos+"Sel").style.display="none";
+    document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+    document.getElementById(pos+'q').focus();
+    var sE = document.getElementById("searchExtend");
+    if(sE != undefined  &&  searchType == "bar"){
+     sE.style.display="block";
+    }else if(sE != undefined){
+     sE.style.display="none";
+    }
+ try{window.clearTimeout(timer);}catch(e){}
+ return false;
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+    	<div class="header">
+        	<h1><a href=""><span class="displaynone">Go To Bus Tour</span></a></h1>
+            
+                <div class="headerright">
+            	<div class="headerinfo">
+                	<div class="limit">Tickets Only For Adults</div>
+                	<div class="tel">(646)-945-2092</div>                 
+                </div>
+                <div class="nav">
+                	<ul>
+                    	<li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="busstation.html">Bus Station</a></li>
+                        <li><a href="busschedule.html">Bus Schedule</a></li>
+                        <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="contentsubpage">
+        <div class="contentopacity">
+        
+          <div class="checkout checkoutfinished">
+          	<h4><a href="index.html">Home</a> ><a href="confirmtickets.html"> Confirm Tickets</a> ><a href="#">  Checkout</a>  > Checkout Finished</h4>
+            
+            <div class="complete">
+            <h4 style="margin-left:0; color:#333333;">Your order has been paid and completed</h4>
+            <p><a href="print.html">View , and Print vour E-tickets</a></p>
+             <div class="sent">Please check your email-box now. We have sent you the E-tickets</div>
+            </div>
+           <div class="Description">
+           <div class="descriptiontop">
+           	<ul>
+            	<li class="left">Item Description
+                </li>
+                <li class="right">Subtotal
+                </li>
+                <div class="clear"></div>
+            </ul>
+           </div>
+           <div class="descriptiondetail">
+           	<ul>
+            	<li style="margin-bottom:14px;"><span class="bold">Syracuse (Liverpool) 2:30am => NewYork - Ocean - Terms & Conditions</span></li>
+                <li><span>Date: </span>2013-06-22 Sat</li>
+                <li><span>Numberof Travelers:</span> Adult: 1</li>
+                <li style="margin-bottom:14px;"><span>Adult 1:</span> charlene Liu</li>
+                <li><span>Departure:</span> 2:30am 441 Beechwooc Ave</li>
+                <li><span>Arrival:</span> 7:00am 3 Allen St</li>
+            </ul>
+            
+           
+           </div>
+           
+            <div class="descriptiondetail" style="margin-top:15px;">
+           	<ul>
+            	<li style="margin-bottom:14px; "><span class="bold">NewYork - Ocean - Terms & Conditions => Syracuse (Liverpool) 2:30am</span></li>
+                <li><span>Date: </span>2013-07-22 Sat</li>
+                <li><span>Numberof Travelers:</span> Adult: 2</li>
+                <li style="margin-bottom:14px;"><span>Adult 2:</span> charlene Liu</li>
+                <li><span>Departure:</span> 7:00am 3 Allen St</li>
+                <li><span>Arrival:</span> 2:30am 441 Beechwooc Ave</li>
+            </ul>
+           </div>
+           <div class="totalprice"> Total :<span> $30</span></div>
+          </div>
+          <div class="clear"></div>          
+        </div>
+        </div> 
+        <div class="clear"></div>
+        </div></div>
+        <div class="graybg">
+        <div class="footer wrapper">
+        	<img src="images/carimg.png" />
+            <div class="footerbottom">
+        	<div class="footermenu">
+            	<ul>
+                	<li><a href="index.html">Home</a></li>
+                   		<li><a href="aboutus.html">About Us</a></li>
+                   	    <li><a href="busschedule.html">Bus Schedules</a></li>
+                   	    <li><a href="busstation.html">Bus Station</a></li>
+                        <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                       <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerright">
+            Copyright © 2008-2013 www.gotobustour.com All Rights Reserved. &nbsp;  &nbsp;&nbsp;&nbsp;    <a href="http://web.yibada.com"> Powered by YIBADA</a>
+            </div>
+            <div class="clear"
+></div>            </div>
+        </div>
+   
+	
+    
+</body>
+</html>
+
+

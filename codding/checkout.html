@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>GoToBusTour</title>
+<link href="css/general.css" type="text/css" rel="stylesheet" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link type="image/x-icon" rel="shortcut icon" href="http://www.yibada.com/clients/GoToBusTours/images/favicon.ico"/>
+<link href="images/favicon.ico" rel="shortcut icon">
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+
+
+<script>
+function drop_mouseover(pos){
+ try{window.clearTimeout(timer);}catch(e){}
+}
+function drop_mouseout(pos){
+ var posSel=document.getElementById(pos+"Sel").style.display;
+ if(posSel=="block"){
+  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+ }
+}
+function drop_hide(pos){
+ document.getElementById(pos+"Sel").style.display="none";
+}
+function search_show(pos,searchType,href){
+    document.getElementById(pos+"SearchType").value=searchType;
+    document.getElementById(pos+"Sel").style.display="none";
+    document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+    document.getElementById(pos+'q').focus();
+    var sE = document.getElementById("searchExtend");
+    if(sE != undefined  &&  searchType == "bar"){
+     sE.style.display="block";
+    }else if(sE != undefined){
+     sE.style.display="none";
+    }
+ try{window.clearTimeout(timer);}catch(e){}
+ return false;
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+    	<div class="header">
+        	<h1><a href=""><span class="displaynone">Go To Bus Tour</span></a></h1>
+            
+                <div class="headerright">
+            	<div class="headerinfo">
+                	<div class="limit">Tickets Only For Adults</div>
+                	<div class="tel">(646)-945-2092</div>                 
+                </div>
+                <div class="nav">
+                	<ul>
+                    	<li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="busstation.html">Bus Station</a></li>
+                        <li><a href="busschedule.html">Bus Schedule</a></li>
+                        <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="contentsubpage">
+        <div class="contentopacity">
+        
+          <div class="checkout">
+          	<h4><a href="index.html">Home</a> ><a href="confirmtickets.html"> Confirm Tickets</a> > Checkout</h4>
+            <div class="total">
+            	<div class="left">Tickets</div>
+                <div class="right">6</div>
+                <div class="left">Total</div>
+                <div class="right">$300</div>
+                <div class="clear"></div>
+            </div>
+            <div class="checkinfo">
+            	Enter your contact and Credit  Card Information to Check Out.
+            </div>
+            <div class="fillblank">
+            	<fieldset>
+                	<div class="fillinfo" style="margin-top:10px;">
+                    	<h2 style="float:left; margin-bottom:0; font-weight:700;">Contact Information</h2>
+                        <div class="clear"></div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Client Name*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Telephone*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Email*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Confirm Email*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                	<div  class="fillinfo">
+                    	<h2 style="float:left; margin-bottom:0; font-weight:700;">Card Information</h2>
+                        <div class="clear"></div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Card Number*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text" placeholder="xxxx-xxxx-xxxx-xxxx"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                         <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Cardholder’s Name*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                          <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Card Expiry Date*:</label></div>
+                        <div class="fill" >
+                        	<select class="month" name="number">
+                            <option value="1">01</option>
+                            <option value="2">02</option>
+                            <option value="3">03</option>
+                            <option value="4">04</option>
+                            <option value="5">05</option>
+                            <option value="6">06</option>
+                            <option value="7">07</option>
+                            <option value="8">08</option>
+                            <option value="9">09</option>
+                            <option value="10">10</option>
+                            <option value="10">11</option>
+                            <option value="10">12</option>
+                        </select> <div class="slash">/</div>
+                        <select class="day" name="number">
+                            <option value="1">01</option>
+                            <option value="2">02</option>
+                            <option value="3">03</option>
+                            <option value="4">04</option>
+                            <option value="5">05</option>
+                            <option value="6">06</option>
+                            <option value="7">07</option>
+                            <option value="8">08</option>
+                            <option value="9">09</option>
+                            <option value="10">10</option>
+                            <option value="10">11</option>
+                            <option value="10">12</option>
+                            <option value="3">13</option>
+                            <option value="4">14</option>
+                            <option value="5">15</option>
+                            <option value="6">16</option>
+                            <option value="7">17</option>
+                            <option value="8">18</option>
+                            <option value="9">19</option>
+                            <option value="10">20</option>
+                            <option value="10">21</option>
+                            <option value="10">22</option>
+                            <option value="3">23</option>
+                            <option value="4">24</option>
+                            <option value="5">25</option>
+                            <option value="6">26</option>
+                            <option value="7">27</option>
+                            <option value="8">28</option>
+                            <option value="9">29</option>
+                            <option value="10">30</option>
+                            <option value="10">31</option>
+                        </select>
+                        <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Card Security Code (CVV2)*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                	<div  class="fillinfo">
+                    	<h2 style="float:left; margin-bottom:0; font-weight:600; color:#666666; font-size:18px;">Billing Address</h2>
+                        <div class="clear"></div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation"> Address*:</label></div>
+                        <div class="fill"  ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">City*:</label></div>
+                        <div class="fill"  ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Zip Code*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Confirm Email*:</label></div>
+                        <div class="fill" ><input class="fillin" type="text"  value=""  name="e" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">Country*:</label></div>
+                        <div class="fill" style="width:290px;" >
+                        
+                        
+                         
+<div class="searchTool" >
+           
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head6SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch " style="border:none;
+    height: 31px;
+    width: 278px;">
+    <div class="nowSearch" id="head6Slected" onclick="if(document.getElementById('head6Sel').style.display=='none'){document.getElementById('head6Sel').style.display='block';}else {document.getElementById('head6Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head6');">New York<!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head6Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head','video',this)" onmouseover="drop_mouseover('head6');" onmouseout="drop_mouseout('head6');">San Francisco</a></li>
+     <li><a href="#" onclick="return search_show('head6','playlist',this)" onmouseover="drop_mouseover('head6');" onmouseout="drop_mouseout('head6');">Los Angeles</a></li>
+     <li><a href="#" onclick="return search_show('head6','user',this)" onmouseover="drop_mouseover('head6');" onmouseout="drop_mouseout('head6');">Chicago</a></li>
+     <li><a href="#" onclick="return search_show('head6','bar',this)" onmouseover="drop_mouseover('head6');" onmouseout="drop_mouseout('head6');">Phoenix</a></li>
+     <li><a href="#" onclick="return search_show('head6','pk',this)" onmouseover="drop_mouseover('head6');" onmouseout="drop_mouseout('head6');">Houston</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+  
+  						<div class="clear"></div>
+                        </div>
+                        </div>
+                        <div class="oneline">
+                        <div class="name" ><label id="" class="nameLabel" for="hotelLocation">State*:</label></div>
+                        <div class="fill"  style="width:290px;"> 
+<div class="searchTool" >
+           
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head7SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch " style="border:none;
+    height: 31px;
+    width: 278px;">
+    <div class="nowSearch" id="head7Slected" onclick="if(document.getElementById('head7Sel').style.display=='none'){document.getElementById('head7Sel').style.display='block';}else {document.getElementById('head7Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head7');">New York<!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head7Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head7','video',this)" onmouseover="drop_mouseover('head7');" onmouseout="drop_mouseout('head7');">San Francisco</a></li>
+     <li><a href="#" onclick="return search_show('head7','playlist',this)" onmouseover="drop_mouseover('head7');" onmouseout="drop_mouseout('head7');">Los Angeles</a></li>
+     <li><a href="#" onclick="return search_show('head7','user',this)" onmouseover="drop_mouseover('head7');" onmouseout="drop_mouseout('head7');">Chicago</a></li>
+     <li><a href="#" onclick="return search_show('head7','bar',this)" onmouseover="drop_mouseover('head7');" onmouseout="drop_mouseout('head7');">Phoenix</a></li>
+     <li><a href="#" onclick="return search_show('head7','pk',this)" onmouseover="drop_mouseover('head7');" onmouseout="drop_mouseout('head7');">Houston</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+  
+  <div class="clear"></div></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="agree">
+            	<label class="checkbox-lbl" for="book_award_checkbox">
+                	<input id="book_award_checkbox" type="checkbox" tabindex="107" value="true" name="isBookAwardTravel">
+            		<span>I had read and agree to the term & conditions for bus tickets.</span>
+                </label>
+            </div>
+          	<div class="confirm"><a href="#" style="color:#ffffff;">Check Out</a></div>
+            <div class="clear"></div>
+          </div> 
+          
+        </div>
+        </div>
+    </div>
+<div class="graybg">
+        <div class="footer wrapper">
+        	<img src="images/carimg.png" />
+            <div class="footerbottom">
+        	<div class="footermenu">
+            	<ul>
+                	<li><a href="index.html">Home</a></li>
+                   		<li><a href="aboutus.html">About Us</a></li>
+                   	    <li><a href="busschedule.html">Bus Schedules</a></li>
+                   	    <li><a href="busstation.html">Bus Station</a></li>
+                        <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                       <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerright">
+            Copyright © 2008-2013 www.gotobustour.com All Rights Reserved. &nbsp;  &nbsp;&nbsp;&nbsp;    <a href="http://web.yibada.com"> Powered by YIBADA</a>
+            </div>
+            <div class="clear"
+></div>            </div>
+        </div>
+   
+</div>
+
+
+</body>
+</html>
+
+

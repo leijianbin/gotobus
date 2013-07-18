@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>GoToBusTour</title>
+<link href="css/general.css" type="text/css" rel="stylesheet" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link type="image/x-icon" rel="shortcut icon" href="http://www.yibada.com/clients/GoToBusTours/images/favicon.ico"/>
+<link href="images/favicon.ico" rel="shortcut icon">
+
+
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+
+
+<script>
+function drop_mouseover(pos){
+ try{window.clearTimeout(timer);}catch(e){}
+}
+function drop_mouseout(pos){
+ var posSel=document.getElementById(pos+"Sel").style.display;
+ if(posSel=="block"){
+  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+ }
+}
+function drop_hide(pos){
+ document.getElementById(pos+"Sel").style.display="none";
+}
+function search_show(pos,searchType,href){
+    document.getElementById(pos+"SearchType").value=searchType;
+    document.getElementById(pos+"Sel").style.display="none";
+    document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+    document.getElementById(pos+'q').focus();
+    var sE = document.getElementById("searchExtend");
+    if(sE != undefined  &&  searchType == "bar"){
+     sE.style.display="block";
+    }else if(sE != undefined){
+     sE.style.display="none";
+    }
+ try{window.clearTimeout(timer);}catch(e){}
+ return false;
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+    	<div class="header">
+        	<h1><a href=""><span class="displaynone">Go To Bus Tour</span></a></h1>
+            
+                <div class="headerright">
+            	<div class="headerinfo">
+                	<div class="limit">Tickets Only For Adults</div>
+                	<div class="tel">(646)-945-2092</div>                 
+                </div>
+                <div class="nav">
+                	<ul>
+                    	<li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                        <li><a href="busstation.html" class="current">Bus Station</a></li>
+                        <li><a href="busschedule.html">Bus Schedule</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+<!-- Header End--> 
+
+    <div class="contentsubpage">
+    	<div class="searchbarside">
+        
+        	<!-- Search Bar Start-->
+        
+        
+        
+<div class="wholesearchbarside">
+ 	<div class="subtickettitle">Bus Tickets</div>
+    <div class="subsearchbar">
+    	<div class="flight">
+        	<ol>
+                  <li class="radio1" style="float:left; height:20px;">
+                      <input type="radio" name="trip-type" />
+                      <label for"Round-trip"> &nbsp;Round-trip</label>
+                  </li>
+                  <li class="radio">
+                      <input type="radio" name="trip-type" />
+                      <label for"one-way">&nbsp;one-way</label>
+                  </li>
+                  <div class="clear"></div>
+            </ol>
+        </div>
+        <div class="clear"></div>
+        <div class="location">
+        	<div class="searchTool">
+            <label for="inadults">Departure City</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="headSearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch">
+    <div class="nowSearch" id="headSlected" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');">New York<!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="headSel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head','video',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">San Francisco</a></li>
+     <li><a href="#" onclick="return search_show('head','playlist',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">Los Angeles</a></li>
+     <li><a href="#" onclick="return search_show('head','user',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">Chicago</a></li>
+     <li><a href="#" onclick="return search_show('head','bar',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">Phoenix</a></li>
+     <li><a href="#" onclick="return search_show('head','pk',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">Houston</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+  <div class="clear"></div>
+			<div class="searchTool searchtoolfloat1" style="margin-top:8px;">
+            <label for="inadults">Arrival City</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head2SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch">
+    <div class="nowSearch" id="head2Slected" onclick="if(document.getElementById('head2Sel').style.display=='none'){document.getElementById('head2Sel').style.display='block';}else {document.getElementById('head2Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head2');">San Francisco<!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head2Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head2','video',this)" onmouseover="drop_mouseover('head2');" onmouseout="drop_mouseout('head2');">New York</a></li>
+     <li><a href="#" onclick="return search_show('head2','playlist',this)" onmouseover="drop_mouseover('head2');" onmouseout="drop_mouseout('head2');">Los Angeles</a></li>
+     <li><a href="#" onclick="return search_show('head2','user',this)" onmouseover="drop_mouseover('head2');" onmouseout="drop_mouseout('head2');">Chicago</a></li>
+     <li><a href="#" onclick="return search_show('head2','bar',this)" onmouseover="drop_mouseover('head2');" onmouseout="drop_mouseout('head2');">Houston</a></li>
+     <li><a href="#" onclick="return search_show('head2','pk',this)" onmouseover="drop_mouseover('head2');" onmouseout="drop_mouseout('head2');">Phoenix</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+<div class="dashlinebox" style="margin-bottom:5px;"></div>
+</form>
+   </div>
+   		<div class="clear"></div>
+        </div>
+        <div class="departure">
+        	<div class="subdep1" style="width:100px; float:left;">
+                                <div>
+                                    <label id="" class="textLabel" for="Departure Date">Departure Date</label>
+                                </div>
+                                <div class="subdates">
+                                    <input class=" " type="text" name="" style="width:86px; height:20px;">
+                                    <label class="date-picker" for="from-date">dates</label>
+                                </div>
+                            </div>
+            <div class="searchTool searchtoolfloat1" style="float:left; width:87px;">
+             <label for="inadults"> &nbsp;Time</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head3SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch" style="width:91px; ">
+    <div class="nowSearch newsearch"  id="head3Slected" onclick="if(document.getElementById('head3Sel').style.display=='none'){document.getElementById('head3Sel').style.display='block';}else {document.getElementById('head3Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head3');">3:00am <!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head3Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head3','video',this)" onmouseover="drop_mouseover('head3');" onmouseout="drop_mouseout('head3');">6:00am</a></li>
+     <li><a href="#" onclick="return search_show('head3','playlist',this)" onmouseover="drop_mouseover('head3');" onmouseout="drop_mouseout('head3');">9:00am</a></li>
+     <li><a href="#" onclick="return search_show('head3','user',this)" onmouseover="drop_mouseover('head3');" onmouseout="drop_mouseout('head3');">12:00pm</a></li>
+     <li><a href="#" onclick="return search_show('head3','bar',this)" onmouseover="drop_mouseover('head3');" onmouseout="drop_mouseout('head3');">1:00pm</a></li>
+     <li><a href="#" onclick="return search_show('head3','pk',this)" onmouseover="drop_mouseover('head3');" onmouseout="drop_mouseout('head3');">3:00pm</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+   			<div class="clear"></div>
+        </div>
+         <div class="return">
+        	<div class="subdep1" style="width:100px; float:left;">
+                                <div>
+                                    <label id="" class="textLabel" for="Departure Date">Departure Date</label>
+                                </div>
+                                <div class="subdates">
+                                    <input class=" " type="text" name="" style="width:86px; height:20px;">
+                                    <label class="date-picker" for="from-date">dates</label>
+                                </div>
+                            </div>
+            <div class="searchTool searchtoolfloat1" style="float:left; width:87px;">
+             <label for="inadults">Time</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head4SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch" style="width:91px;">
+    <div class="nowSearch" id="head4Slected" onclick="if(document.getElementById('head4Sel').style.display=='none'){document.getElementById('head4Sel').style.display='block';}else {document.getElementById('head4Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head4');">9:00pm <!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head4Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head4','video',this)" onmouseover="drop_mouseover('head4');" onmouseout="drop_mouseout('head4');">6:00am</a></li>
+     <li><a href="#" onclick="return search_show('head4','playlist',this)" onmouseover="drop_mouseover('head4');" onmouseout="drop_mouseout('head4');">9:00am</a></li>
+     <li><a href="#" onclick="return search_show('head4','user',this)" onmouseover="drop_mouseover('head4');" onmouseout="drop_mouseout('head4');">12:00pm</a></li>
+     <li><a href="#" onclick="return search_show('head4','bar',this)" onmouseover="drop_mouseover('head4');" onmouseout="drop_mouseout('head4');">1:00pm</a></li>
+     <li><a href="#" onclick="return search_show('head4','pk',this)" onmouseover="drop_mouseover('head4');" onmouseout="drop_mouseout('head4');">3:00pm</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+   
+   			<div class="clear"></div>
+            <div class="dashlinebox" style="margin-bottom:5px;"></div>
+        </div>
+        <div class="passenger">
+          <div class="searchTool">
+           <label for="inadults">Passengers NO.</label>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head5SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch">
+    <div class="nowSearch" id="head5Slected" onclick="if(document.getElementById('head5Sel').style.display=='none'){document.getElementById('head5Sel').style.display='block';}else {document.getElementById('head5Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head5');">1 <!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head5Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head5','video',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">2</a></li>
+     <li><a href="#" onclick="return search_show('head5','playlist',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">3</a></li>
+     <li><a href="#" onclick="return search_show('head5','user',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">4</a></li>
+     <li><a href="#" onclick="return search_show('head5','bar',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">5</a></li>
+     <li><a href="#" onclick="return search_show('head5','pk',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">6</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+  	    <div class="subactions">
+			<a href="">SEARCH</a>
+    	</div>
+        </div>
+    </div>
+</div>
+			<!-- End -->
+        
+        </div>
+        <div class="subpageright">
+        	<div class="subpagebreadcrum">
+            	Bus Station
+            </div>
+           <div class="busstationcon">
+           		<div class="bussstationbox">
+                	<div class="busstationimg"><img src="images/map01.jpg" /></div>
+                    <div class="busstationinfor">
+                    	<h4>Buffalo</h4>
+                        <h5>809 B Millersport HwyAmherst, NY 14226</h5>
+                        <div class="busstationdetail">Customer is encouraged to check on Ocean TravelBus.com (./) Website - Weather Update for any bus cancellation notice on selected bus.</div>
+                    </div>
+                </div>
+           		<div class="bussstationbox bussstationbox1">
+                	<div class="busstationimg "><img src="images/map02.jpg" /></div>
+                    <div class="busstationinfor">
+                    	<h4>Rochester</h4>
+                        <h5>Rochester, NY 14607</h5>
+                        <div class="busstationdetail">Customer is encouraged to check on Ocean TravelBus.com (./) Website - Weather Update for any bus cancellation notice on selected bus.</div>
+                    </div>
+                </div>
+                <div class="bussstationbox bussstationbox2">
+                	<div class="busstationimg"><img src="images/map03.jpg" /></div>
+                    <div class="busstationinfor">
+                    	<h4>Syracuse</h4>
+                        <h5>Liverpool, NY 13088</h5>
+                        <div class="busstationdetail">Customer is encouraged to check on Ocean TravelBus.com (./) Website - Weather Update for any bus cancellation notice on selected bus.</div>
+                    </div>
+                </div>
+                <div class="bussstationbox bussstationbox1 bussstationbox2">
+                	<div class="busstationimg"><img src="images/map04.jpg" /></div>
+                    <div class="busstationinfor">
+                    	<h4>New York City</h4>
+                        <h5>3 Allen Street New York, NY 10002</h5>
+                        <div class="busstationdetail">Customer is encouraged to check on Ocean TravelBus.com (./) Website - Weather Update for any bus cancellation notice on selected bus.</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+           </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+<!-- Footer Start -->
+<div class="graybg">
+        <div class="footer wrapper">
+        	<img src="images/carimg.png" />
+            <div class="footerbottom">
+        	<div class="footermenu">
+            	<ul>
+                	<li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="busschedule.html">Bus Schedules</a></li>
+                    <li><a href="busstation.html">Bus Station</a></li>
+                    <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerright">
+            Copyright © 2008-2013 www.gotobustour.com All Rights Reserved. &nbsp;  &nbsp;&nbsp;&nbsp;    <a href="http://web.yibada.com"> Powered by YIBADA</a>
+            </div>
+            <div class="clear"></div>
+             </div>
+        </div>
+   
+</div>
+
+
+</body>
+</html>
+
+

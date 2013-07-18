@@ -1,0 +1,140 @@
+
+<div class="searchbarside">
+  <div class="wholesearchbarside">
+    <div class="subtickettitle">Bus Tickets</div>
+    <div class="subsearchbar">
+     <div class="flight">
+       <ol>
+        <form name="trip-type">
+          <li class="radio1" style="float:left; height:20px;">
+            <input type="radio" name="search" value="round-trip" checked="yes"/>
+            <label for"Round-trip"> &nbsp;Round-trip</label>
+          </li>
+          <li class="radio">
+            <input type="radio" name="search" value="one-way"/>
+            <label for"one-way">&nbsp;one-way</label>
+          </li>
+          <div class="clear"></div>
+        </form>
+      </ol>
+    </div>
+    <div class="clear"></div>
+    <div class="location">
+     <div class="searchTool">
+      <label for="inadults">Departure City</label><div class="clear"></div>
+      <div class="selSearch">
+        <select name="category_id">
+          <?php foreach ($categories as $category_1) { ?>
+          <?php if ($category_1['category_id'] == $category_id) { ?>
+          <option value="<?php echo $category_1['category_id']; ?>" selected="selected"><?php echo $category_1['name']; ?></option>
+          <?php } else { ?>
+          <option value="<?php echo $category_1['category_id']; ?>"><?php echo $category_1['name']; ?></option>
+          <?php } ?>
+          <?php } ?>
+        </select>
+      </div>
+      <div class="clear"></div>
+
+    </div>
+    <div class="clear"></div>
+    <div class="searchTool searchtoolfloat1" style="margin-top:8px;">
+      <label for="inadults">Arrival City</label>
+      <div class="clear"></div>
+
+      <form name="headSearchForm" id="headSearchForm">
+       <div class="selSearch">
+        <select name="category_arrival_id">
+          <option value="0"><?php echo $text_categorytop; ?></option>
+          <?php foreach ($categories as $category_1) { ?>
+          <option value="<?php echo $category_1['category_id']; ?>"><?php echo $category_1['name']; ?></option>
+          <?php foreach ($category_1['children'] as $category_2) { ?>
+          <option value="<?php echo $category_2['category_id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $category_2['name']; ?></option>
+          <?php foreach ($category_2['children'] as $category_3) { ?>
+          <option value="<?php echo $category_3['category_id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $category_3['name']; ?></option>
+          <?php } ?>
+          <?php } ?>
+          <?php } ?>
+        </select>
+      </div>
+
+      <div class="clear"></div>
+      <div class="dashlinebox" style="margin-bottom:5px;"></div>
+    </form>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="departure">
+ <div class="subdep1" style="width:100px; float:left;">
+  <div>
+    <label id="" class="textLabel" for="Departure Date">Departure Date</label>
+  </div>
+  <div class="subdates">
+    <input class="datepicker" type="date hasDatepicker" name="filter_date" style="width:86px; height:20px;">
+    <label class="date-picker" for="from-date">dates</label>
+  </div>
+</div>
+<div class="searchTool searchtoolfloat1" style="float:left; width:87px;">
+ <label for="inadults"> &nbsp;Time</label><div class="clear"></div>
+ <form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <div class="selSearch" style="width:91px; ">
+   </div>
+   <div class="clear"></div>
+ </form>
+</div>
+<div class="clear"></div>
+</div>
+<div class="return">
+ <div class="subdep1" style="width:100px; float:left;">
+  <div>
+    <label id="" class="textLabel" for="Departure Date">Departure Date</label>
+  </div>
+  <div class="subdates">
+    <input class="datepicker" type="text" name="filter_return_date" style="width:86px; height:20px;">
+    <label class="date-picker" for="from-date">dates</label>
+  </div>
+</div>
+<div class="searchTool searchtoolfloat1" style="float:left; width:87px;">
+ <label for="inadults">Time</label><div class="clear"></div>
+ <form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+   <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head4SearchType" name="searchType" type="hidden" value="playlist"> 
+   <div class="selSearch" style="width:91px;">
+   </div>
+   <div class="clear"></div>
+ </form>
+</div>
+
+<div class="clear"></div>
+<div class="dashlinebox" style="margin-bottom:5px;"></div>
+</div>
+<div class="passenger">
+  <div class="searchTool">
+   <label for="inadults">Passengers NO.</label>
+   <form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+
+     <div class="selSearch">
+    <div class="nowSearch" id="head5Slected" onclick="if(document.getElementById('head5Sel').style.display=='none'){document.getElementById('head5Sel').style.display='block';}else {document.getElementById('head5Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head5');">1 <!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+    
+    <ul class="selOption" id="head5Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head5','video',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">2</a></li>
+     <li><a href="#" onclick="return search_show('head5','playlist',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">3</a></li>
+     <li><a href="#" onclick="return search_show('head5','user',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">4</a></li>
+     <li><a href="#" onclick="return search_show('head5','bar',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">5</a></li>
+     <li><a href="#" onclick="return search_show('head5','pk',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">6</a></li>
+   </ul>
+ </div>
+ <div class="clear"></div>
+</form>
+</div>
+<div class="subactions">
+ <a href="">SEARCH</a>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
