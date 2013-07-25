@@ -5901,3 +5901,6 @@
 2013-07-16 20:45:26 - PHP Notice:  Undefined offset: 0 in /Applications/XAMPP/xamppfiles/htdocs/opencart/gotobus/catalog/view/theme/gotobus/template/account/order_info1.tpl on line 89
 2013-07-16 20:45:26 - PHP Notice:  Undefined offset: 0 in /Applications/XAMPP/xamppfiles/htdocs/opencart/gotobus/catalog/view/theme/gotobus/template/account/order_info1.tpl on line 91
 2013-07-16 20:45:26 - PHP Notice:  Undefined offset: 0 in /Applications/XAMPP/xamppfiles/htdocs/opencart/gotobus/catalog/view/theme/gotobus/template/account/order_info1.tpl on line 91
+2013-07-25 11:40:36 - PHP Notice:  Undefined variable: product in /Applications/XAMPP/xamppfiles/htdocs/opencart/gotobus/catalog/view/theme/gotobus/template/product/search.tpl on line 154
+2013-07-25 11:40:36 - PHP Notice:  Undefined variable: product in /Applications/XAMPP/xamppfiles/htdocs/opencart/gotobus/catalog/view/theme/gotobus/template/product/search.tpl on line 155
+2013-07-25 11:40:36 - PHP Notice:  Undefined variable: product in /Applications/XAMPP/xamppfiles/htdocs/opencart/gotobus/catalog/view/theme/gotobus/template/product/search.tpl on line 156
