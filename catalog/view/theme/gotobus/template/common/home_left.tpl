@@ -153,9 +153,9 @@ echo $filter_return_date;
     <div class="searchbar">
       <!-- Advanced Options -->
       
-      <div id="dropdown-categories" style="padding: 10px 0px;">
+      <div id="dropdown-categories" style="padding: 7px 0px;">
 
-        <div class="flight">
+        <div class="flight" style="border-bottom-color: #B5B5B5; border-bottom-style:dashed; border-bottom-width:1px; padding-bottom: 8px; ">
           <ol>
             <li class="radio1" style="float:left; height:20px;">
               <input type="radio" name="search" id="round-trip" value="round-trip" checked/>
@@ -176,7 +176,7 @@ echo $filter_return_date;
       -->
       
       <div class="clear"></div>
-      <div class="location">
+      <div class="location" style=" border-bottom-color: #B5B5B5; border-bottom-style:dashed; border-bottom-width:1px; padding-bottom: 13px; padding-top:7px; ">
         <div class="searchTool">
           <label for="inadults">Departure City</label><div class="clear"></div>
 
@@ -228,7 +228,7 @@ echo $filter_return_date;
 </div>
 <div class="clear"></div>
 
-<div class="pickdate">
+<div class="pickdate" style=" border-bottom-color: #B5B5B5; border-bottom-style:dashed; border-bottom-width:1px; height: 64px; padding-top:1px; ">
   <div class="subdep1" style="width:191px; float:left;">
     <div>
       <label id="" class="textLabel" for="Departure Date">Departure Date</label>
@@ -396,15 +396,15 @@ var dateToday = new Date();
 
 $(".date").datepicker({
   minDate: dateToday,
-  dateFormat: 'yy-mm-dd',
+  dateFormat: 'mm/dd/yy',
   onClose: function(dates) { 
     if(dates != ''){
             var someDate = new Date(dates); // add arguments as needed
-            someDate.setTime(someDate.getTime() + 2*1000*24*60*60);
+            someDate.setTime(someDate.getTime() + 1000*24*60*60);
             var date_return = $(".date-return").attr('value');
             if(date_return == '')
             {
-              $(".date-return").val($.datepicker.formatDate('yy-mm-dd',someDate));
+              $(".date-return").val($.datepicker.formatDate('mm/dd/yy',someDate));
             }
             date_origin = $('.date').val();
           }
@@ -414,7 +414,7 @@ $(".date").datepicker({
 
 $(".date-return").datepicker({
   minDate: dateToday,
-  dateFormat: 'yy-mm-dd',
+  dateFormat: 'mm/dd/yy',
   onClose: function(dates) { 
     if(dates != ''){
             var someDate_return = new Date(dates); // add arguments as needed
@@ -423,7 +423,7 @@ $(".date-return").datepicker({
             var date = $(".date").attr('value');
             if(date == '')
             {
-              $(".date").val($.datepicker.formatDate('yy-mm-dd',someDate));
+              $(".date").val($.datepicker.formatDate('mm/dd/yy',someDate));
             }
             date_origin_return = $(".date_return").val();
           }

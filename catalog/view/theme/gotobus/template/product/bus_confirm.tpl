@@ -26,10 +26,12 @@ print_r($categories);
 <div id="content-right">
 
 
-<div class="subpageright">
-   <div class="subpagebreadcrum">
-       <a href="index.html">Home</a> > Confirm Tickets
+  <div class="subpageright">
+
+   <div class="heading_title">
+       <a href="#">Home</a> &gt;  Choose Time &gt;  Confirm Tickets
    </div>
+
    <div class="confirmsheet">
        <div class="sheettitle">Confirm your Bus Tickets</div>
        <div class="ticketconfrim">
@@ -76,8 +78,8 @@ print_r($categories);
                                </ul>
                            </li>
                        </ul>
-                   </div>
-                   <div class="sheetinput">
+               </div>
+               <div class="sheetinput">
                        <div class="sheetfillname"><span>*</span>Name</div>
                        <div class="sheetframe">
                            <ul>
@@ -88,11 +90,11 @@ print_r($categories);
                             <?php }?>
                            </ul>
                        </div>
-                   </div>
-                   <div class="clear"></div>
                </div>
-               <?php if( !empty($product_return) ){?>
-               <div class="sheetbox">
+               <div class="clear"></div>
+           </div>
+           <?php if( !empty($product_return) ){?>
+           <div class="sheetbox">
                    <div class="boxtitle">Return</div>
                    <div class="boxdetail">
                        <ul>
@@ -135,8 +137,8 @@ print_r($categories);
                                    </ul>
                                </li>
                            </ul>
-                       </div>
-                       <div class="sheetinput">
+                   </div>
+                   <div class="sheetinput">
                            <div class="sheetfillname"><span>*</span>Name</div>
                            <div class="sheetframe">
                                <ul>
@@ -147,10 +149,11 @@ print_r($categories);
                             <?php }?>
                                </ul>
                            </div>
-                       </div>
-                       <div class="clear"></div>
                    </div>
-                   <div class="sheettotal">
+                   <div class="clear"></div>
+           </div>
+           <?php }?>
+           <div class="sheettotal">
                     <ul>
                         <li class="totalname">Tickets</li>
                         <li class="totalprice"><?php echo intval($product['quantity']*2)?></li>
@@ -158,13 +161,13 @@ print_r($categories);
                         <li class="totalprice">$<?php echo intval($product['quantity']) * intval($product['price']) + intval($product_return['quantity']) * intval($product_return['price']) ?></li>
                     </ul>
                     <div class="clear"></div>
-               </div>
-               <?php }?>
-            </div>
-            <div class="gotocheck"><a id = "gotocheckout" href="javascript:void(0);">Go To Check Out</a></div>
-        </div> 
-    </div>
+           </div>
+       </div>
+       <div class="gotocheck"><a id = "gotocheckout" href="javascript:void(0);">Go To Check Out</a></div> 
+   </div>
+
 </div>
+
 
 </div>
 

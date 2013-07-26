@@ -22,12 +22,15 @@ print_r($categories);
 
 
 <div id="content-right">
+<div class="subpageright">	
 
-	<!-- Research Result -->
+<h1 class="heading_title">
+		<a href="#">Home</a> &gt; Choose Time      
+</h1>
+<div class="sheettitle">Choose your Time</div>
 
-	<h6 class="title-part">
-		Choose Time      
-	</h6>
+
+<div class="ticketconfrim">
 
 	<?php $flag = 1;
 	$count = 1;
@@ -37,7 +40,7 @@ print_r($categories);
 	?>
 
 	<?php if ($products) { ?>
-		<div class="product-list">
+		
 
 		<?php foreach ($products as $product) { 
 			if( $product['bus_type'] == 'single')
@@ -131,10 +134,7 @@ print_r($categories);
 				</table>
 			</div>
 		<?php }?>
-
 		</div>
-
-
 		<div class="submitnext">
 				<div class="nextstep">
 					<button class="submit-button">Next</button>
@@ -156,8 +156,13 @@ print_r($categories);
 			<input name="quantity" type="hidden" value="<?php echo $product['passenger_no']?>">
 			<input name="bus_type" type="hidden" value="<?php echo $search?>">
 		</form>
-		<div class="clear"></div>
+	
+	<div class="clear"></div>
 </div>
+
+
+</div>
+
 
 
 <script type="text/javascript">

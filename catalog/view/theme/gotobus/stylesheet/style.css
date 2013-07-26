@@ -84,7 +84,8 @@ img{ border:none; margin:0; padding:0; }
 .sheetinput .sheetfillname span{ color:#fc2020;
 	}
 .sheetframe { float:left; width: 510px;}
-.sheetinput li .fillinsheet{ width:199px; height:32px; border:1px solid #d5d5d5;
+.sheetinput li .fillinsheet{ width: 191px;
+height: 24px; border:1px solid #d5d5d5;
 	}
 .sheetframe { float:left;
 	}
