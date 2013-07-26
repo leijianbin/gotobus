@@ -14,7 +14,7 @@ body, td, th, input, textarea, select, a {
 	font-size: 12px;
 }
 h1, .welcome {
-	color: #636E75;
+	color: #3F464B;
 	font: Verdana;
 	margin-top: 0px;
 	margin-bottom: 20px;
@@ -562,18 +562,18 @@ table.radio tr.highlight:hover td {
 a.button, input.button {
 	cursor: pointer;
 	color: #FFFFFF;
-	line-height: 12px;
+	line-height: 35px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	background: url('../image/button.png') repeat-x;
-	-webkit-border-radius: 7px 7px 7px 7px;
+	background-color: #0e8bb0;
+	height: 35px;
 	-moz-border-radius: 7px 7px 7px 7px;
 	-khtml-border-radius: 7px 7px 7px 7px;
-	border-radius: 7px 7px 7px 7px;
-	-webkit-box-shadow: 0px 2px 2px #DDDDDD;
+	/* border-radius: 7px 7px 7px 7px; */
+	/* -webkit-box-shadow: 0px 2px 2px #DDDDDD; */
 	-moz-box-shadow: 0px 2px 2px #DDDDDD;
-	box-shadow: 0px 2px 2px #DDDDDD;
+	/* box-shadow: 0px 2px 2px #DDDDDD; */
 }
 a.button {
 	display: inline-block;
@@ -583,7 +583,7 @@ a.button {
 input.button {
 	margin: 0;
 	border: 0;
-	height: 24px;
+	height: 30px;
 	padding: 0px 12px 0px 12px;
 }
 a.button:hover, input.button:hover {
@@ -1524,6 +1524,7 @@ ul.box-filter > li ul {
 .checkout-content .left {
 	float: left;
 	width: 48%;
+	height: 30px;
 }
 .checkout-content .right {
 	float: right;

@@ -37,7 +37,10 @@ body{ background:url(../image/bg_smallmainpage.jpg) repeat-x; margin:0; padding:
 .heading_title { font-size: 20px;
 font-weight: 400px;
 color: #0e8bb0;}
-
+.heading_title a { font-size: 20px; text-decoration:none;
+font-weight: 400px;
+color: #0e8bb0;}
+.heading_title a:hover { text-decoration:underline;}
 #column-right {width: 500px; margin-bottom: 20px;}
 #search-right {width: 664px; margin-bottom: 20px;float:left;}
 #slideshow0 {border: 5px solid #ffffff;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);}
@@ -92,11 +95,11 @@ h2{ font-size:20px; color:#0e8bb0; margin-bottom:7px; font-weight:normal; text-a
 .departure { margin-top:5px;}
 .destination .departure,.return { margin-top:5px; }
 .searchbar .passenger { padding-top:4px;  float:left;}
-.searchbar .actions{ margin-top:10px; margin-left:19px; float:left; text-align:center; line-height:42px; background-color:#0e8bb0; width:194px; height:42px; font-size:24px; color:#ffffff; text-align:center;}
-.searchbar .actions a { color:#ffffff; text-decoration:none; width:194px; height:42px; display:block;}
+.searchbar .actions{ margin-top:10px; margin-left:20px; float:left; text-align:center; line-height:42px; background-color:#0e8bb0; width:191px; height:42px; font-size:24px; color:#ffffff; text-align:center;}
+.searchbar .actions a { color:#ffffff; text-decoration:none; width:191px; height:42px; display:block; font-size:24px;}
 .searchbar .actions a:hover { background-color:#046987;}
 .tickettitle { width:420px; height:39px; font-size:24px; font-weight:bold; padding-left:20px; line-height:41px; color:#0e8bb0; background:url(../image/searchtopbg.png) repeat; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.1);}
-.searchbar { width:422px; height:254px; padding-left:18px; background:url(../image/searchbottombg.png) repeat; font-size:12px; color:#333333; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.1); float:left;
+.searchbar { width:402px; height:254px; padding-left:18px; padding-right:20px; background:url(../image/searchbottombg.png) repeat; font-size:12px; color:#333333; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.1); float:left;
 	}
 .flight { margin-top:11px;}
 .searchbar .flight .radio{ float:left; margin:0 0 0 20px; width:100px;
@@ -143,21 +146,21 @@ margin-bottom: 20px;
 *travel04 start*/
 #container #content #content-right{min-height:420px;}
 #content-right .contentsinfo .title_tap{ font-size:16px; font-weight:bold; color:#333;}
-.contentsinfo{ widows:692px;  padding-bottom:20px;}
+.contentsinfo{ widows:692px;  padding-bottom:20px; /* background-color: #ffffff; */}
 .contentsinfo h6, #content-right h6.title-part{ font-size:20px; padding:13px 0 0 0;}
 #content-right h6.title-part{ margin-bottom:20px;}
-.contentsinfo .traveltime{ float:left;margin:13px 0 8px 0;}
+.contentsinfo .traveltime{ float:left; padding: 13px 0 8px 0; background-color: #ffffff; width: 618px; height: 25px; border: 1px solid #d5d5d5;}
 .contentsinfo .traveltime p.withbg{float:left; background:url(../images/a.gif) left top no-repeat; padding-left:25px; margin-right:8px; line-height:21px; font-size:16px; font-weight:bold; color:#F30;}
 .contentsinfo .traveltime .calendar{ float:left;padding-left:7px;}
 .contentsinfo .traveltime .calendar #date-select{ width:120px; }
 .contentsinfo .traveltime p.fontbold{ font-weight:bold; float:left; padding-left:10px;}
 .contentsinfo .traveltime p span{ color:#e86f04;}
-.contentsinfo table{ width:680px; border:1px solid #dedede;border-bottom:0; /* padding-bottom:15px;*/ }
+.contentsinfo table{ width: 620px; border:1px solid #dedede;border-bottom:0; /* padding-bottom:15px;*/ background-color: #ffffff;}
 .contentsinfo table tr{text-align:center; width:710px; height:40px; /*border-top:1px solid #dedede;*/}
 .contentsinfo table tr td{border-bottom:1px solid #dedede;}
 .contentsinfo table tr.title td{ font-size:16px; font-weight:bold; height:30px; border-collapse:collapse;}
 .contentsinfo table tr td.col4{color:#ff1111; font-weight:bold;}
-.contentsinfo table td.col1{ width:95px;border-right:1px solid #dedede;}
+.contentsinfo table td.col1{ width:95px; border-right: 1px solid #d5d5d5;}
 .contentsinfo table tbody td.col1{ text-align:center; padding-left:10px;}
 .contentsinfo .tikinfo #booking_info table tbody tr.title td{ }
 .contentsinfo .tikinfo #booking_info table tbody td.col1{ text-align:left;}
@@ -175,13 +178,13 @@ margin-bottom: 20px;
 .contentsinfo .passengerinfo .total{ border:none; width:678px; padding-right:20px;}
 .contentsinfo .total span{display:inline-block; font-weight:bold;}
 .contentsinfo .total span.total_all{ font-size:22px; color:#CC0000; line-height:40px;}
-.submitnext { text-align:right; float:right; margin-bottom:20px;}
-.nextstep{ text-align:right; margin-top:20px;  background:url(../images/button-right.jpg) no-repeat right 0; width:auto; height:30px; display:inline-block; padding-right:5px;}
-.nextstep button{ width:auto; height:30px; border:none; cursor:pointer; font-size:16px; color:#FFF; padding:0 20px 0 25px; text-shadow:1px 1px #436500; }
+.submitnext { text-align:right; float:right; /* margin-bottom:20px; */}
+.nextstep{ text-align:right; margin-top:20px;  background-color: #0e8bb0; width:auto; height:30px; display:inline-block;}
+.nextstep button{ width:auto; height:35px; border:none; cursor:pointer; font-size:16px; color: #ffffff; padding:0 20px 0 25px; background-color: #0e8bb0; }
 .nextstep:hover{ background:url(../images/button-right.jpg) no-repeat right -30px; }
-.nextstep:hover button{background:url(../images/button-bg.jpg) no-repeat 0 -30px;}
+.nextstep:hover button{background-color:#046987;}
 .contentsinfo table td.col2, .contentsinfo table td.col3, .contentsinfo table td.col5, .contentsinfo table td.col6{border-right:1px solid #dedede;}
-.contentsinfo table td.col2, .contentsinfo table td.col3{ width:140px;}
+.contentsinfo table td.col2, .contentsinfo table td.col3{ width: 100px;}
 .contentsinfo table td.col6{width:100px;}
 .contentsinfo table tr td select{ width:130px;}
 #container #content #content-right .contentsinfo .traveltime p { margin-left:0px;}
@@ -246,11 +249,11 @@ margin-bottom: 20px;
 
 /* */
 .subdates .datepicker
-{background: url(../image/Callender.png) no-repeat 170px center #ffffff;}
+{background: url(../image/Callender.png) no-repeat 168px center #ffffff;}
 #sidebarsearch 
 {padding: 10px;}
 
-#content-right {width: 700px; float: left; padding-left: 20px;}
+#content-right {width: 704px; float: left;}
 
 
 

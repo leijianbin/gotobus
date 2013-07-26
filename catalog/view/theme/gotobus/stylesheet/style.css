@@ -49,9 +49,9 @@ img{ border:none; margin:0; padding:0; }
 
 /* Search Bus Start */
 
-.searchbarside { width:235px; height:456px; background-color:#d5d5d5; display:block; float:left;
+.searchbarside { width:235px; height:456px; display:block; float:left;
 	}
-.subpageright { width:664px; height:100%; background:url(../image/bg_subpage.png) no-repeat; float:left; margin-left:20px; padding:20px;
+.subpageright { width:664px; background:url(../image/bg_subpage.png) no-repeat; float:left; padding:20px; margin-left:20px;
 	}
 .subpagebreadcrum { font-size:20px; font-weight:400px; color:#0e8bb0;
 	}
@@ -84,7 +84,7 @@ img{ border:none; margin:0; padding:0; }
 .sheetinput .sheetfillname span{ color:#fc2020;
 	}
 .sheetframe { float:left; width: 510px;}
-.sheetinput li .fillinsheet{ width:162px; height:24px; border:1px solid #d5d5d5;
+.sheetinput li .fillinsheet{ width:199px; height:32px; border:1px solid #d5d5d5;
 	}
 .sheetframe { float:left;
 	}
@@ -183,7 +183,7 @@ img{ border:none; margin:0; padding:0; }
 .subsearchbar .location{ margin-top:7px;}
 .subsearchbar .date-picker{ display:block; width:17px; height:18px; background:url(../image/Callender.png) no-repeat; top:4px; right:4px; overflow:hidden; position:absolute; text-indent:-999em;}
 
-.subdates { position:relative; width:141px; float:left;}
+.subdates { position:relative; width:141px; float:left; margin-top: 2px;}
 .subdep1 { width:150px; float:left;}
 
 .homepage .subdates { position:relative; width:191px; float:left;}
@@ -194,12 +194,12 @@ img{ border:none; margin:0; padding:0; }
 .destination .departure,.return { margin-top:5px; }
 .subsearchbar .passenger { padding-top:4px;  float:left;}
  .subactions{ margin-top:13px; float:left; text-align:center; line-height:42px; background-color:#0e8bb0; width:194px; height:42px; font-size:24px; color:#ffffff; text-align:center;}
-.subactions a { color:#ffffff; text-decoration:none; width:194px; height:42px; display:block;}
+.subactions a { color:#ffffff; text-decoration:none; width:194px; height:42px; display:block; font-size: 23px;}
  .subactions a:hover { background-color:#046987;}
 .subtickettitle { width:215px; height:39px; font-size:24px; font-weight:bold; padding-left:20px; line-height:41px; color:#0e8bb0; background:url(../image/searchtopbg.png) repeat; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.1);}
-.subsearchbar { width:215px; height:420px; padding-left:18px; background:url(../image/searchbottombg.png) repeat; font-size:12px; color:#333333; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.1); float:left;
+.subsearchbar { width:215px; height:420px; padding-left:20px; background:url(../image/searchbottombg.png) repeat; font-size:12px; color:#333333; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.1); float:left;
 	}
-.flight { margin-top:14px;}
+.flight { margin-top: 5px;}
 .subsearchbar .flight .radio{ float:left; margin:0 0 0 20px; width:100px;
 }
 .subsearchbar location .loc1,.loc2{ float:left; margin-left:20px;
@@ -237,7 +237,7 @@ a img{border:0;}
 #head4Sel { width:91px;}
 .dashlinebox {
     border-bottom: 1px dashed #B5B5B5;
-    height: 15px;
+    height: 6px;
     width: 190px;}
 #head6Slected {border: 1px solid #CCCCCC; background: url("../image/arrow.png") no-repeat scroll 264px 11px transparent;
     height: 28px;
