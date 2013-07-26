@@ -108,7 +108,7 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
   <div class="headerright">
               <div class="headerinfo">
                   <div class="limit">Tickets Only For Adults</div>
-                  <div class="tel">(646)-945-2092</div>                 
+                  <div class="tel"><?php echo $this->config->get('config_telephone');?> </div>                 
               </div>
               <div class="nav">
                   <ul>
