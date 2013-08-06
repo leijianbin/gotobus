@@ -37,12 +37,17 @@ class ModelReportProduct extends Model {
 	}
 	
 	public function getPurchased($data = array()) {
-		$sql = "SELECT op.name, op.model, SUM(op.quantity) AS quantity, SUM(op.total + op.total * op.tax / 100) AS total FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id)";
+		$sql = "SELECT o.invoice_no,o.firstname, op.order_id, o.lastname,op.departure_date,op.product_id, op.name, op.model, SUM(op.quantity) AS quantity, SUM(op.total + op.total * op.tax / 100) AS total FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id)";
 		
 		if (!empty($data['filter_order_status_id'])) {
 			$sql .= " WHERE o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
 		} else {
 			$sql .= " WHERE o.order_status_id > '0'";
+		}
+		if (!empty($data['filter_order_schedule'])) {
+			$sql .= " AND op.product_id = '" . (int)$data['filter_order_schedule'] . "'";
+		} else {
+			$sql .= " AND op.product_id > '0'";
 		}
 		
 		if (!empty($data['filter_date_start'])) {
@@ -53,6 +58,7 @@ class ModelReportProduct extends Model {
 			$sql .= " AND DATE(o.date_added) <= '" . $this->db->escape($data['filter_date_end']) . "'";
 		}
 		
+		//$sql .= " GROUP BY op.model ORDER BY total DESC";
 		$sql .= " GROUP BY op.model ORDER BY total DESC";
 					
 		if (isset($data['start']) || isset($data['limit'])) {
@@ -92,6 +98,14 @@ class ModelReportProduct extends Model {
 		$query = $this->db->query($sql);
 				
 		return $query->row['total'];
+	}
+
+	public function getTotalModel() {
+      	$sql = "SELECT model,product_id FROM `" . DB_PREFIX . "order_product`";
+		
+		$query = $this->db->query($sql);
+				
+		return $query->rows;
 	}
 }
 ?>

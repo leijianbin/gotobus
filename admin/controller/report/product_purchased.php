@@ -21,7 +21,13 @@ class ControllerReportProductPurchased extends Controller {
 			$filter_order_status_id = $this->request->get['filter_order_status_id'];
 		} else {
 			$filter_order_status_id = 0;
-		}	
+		}
+
+		if (isset($this->request->get['filter_order_schedule'])) {
+			$filter_order_schedule = $this->request->get['filter_order_schedule'];
+		} else {
+			$filter_order_schedule = 0;
+		}		
 						
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -41,6 +47,10 @@ class ControllerReportProductPurchased extends Controller {
 		
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
+		}
+
+		if (isset($this->request->get['filter_order_schedule'])) {
+			$url .= '&filter_order_schedule=' . $this->request->get['filter_order_schedule'];
 		}
 								
 		if (isset($this->request->get['page'])) {
@@ -69,6 +79,7 @@ class ControllerReportProductPurchased extends Controller {
 			'filter_date_start'	     => $filter_date_start, 
 			'filter_date_end'	     => $filter_date_end, 
 			'filter_order_status_id' => $filter_order_status_id,
+			'filter_order_schedule'  => $filter_order_schedule,
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
 		);
@@ -78,11 +89,23 @@ class ControllerReportProductPurchased extends Controller {
 		$results = $this->model_report_product->getPurchased($data);
 		
 		foreach ($results as $result) {
+			$action = array();
+									
+			$action[] = array(
+				'text' => $this->language->get('text_edit'),
+				'href' => $this->url->link('sale/order/update', 'token=' . $this->session->data['token'] . '&order_id=' . $result['order_id'] . $url, 'SSL')
+			);
+
 			$this->data['products'][] = array(
 				'name'       => $result['name'],
 				'model'      => $result['model'],
 				'quantity'   => $result['quantity'],
-				'total'      => $this->currency->format($result['total'], $this->config->get('config_currency'))
+				'departure_date' => $result['departure_date'],
+				'invoice_no' => $result['invoice_no'],
+				'product_id' => $result['product_id'],
+				'customer' => $result['firstname']." ".$result['lastname'],
+				'total'      => $this->currency->format($result['total'], $this->config->get('config_currency')),
+				'action'        => $action
 			);
 		}
 				
@@ -107,6 +130,8 @@ class ControllerReportProductPurchased extends Controller {
 		$this->load->model('localisation/order_status');
 		
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
+
+		$this->data['order_schedules'] = $this->model_report_product->getTotalModel();
 		
 		$url = '';
 						
@@ -128,12 +153,13 @@ class ControllerReportProductPurchased extends Controller {
 		$pagination->limit = $this->config->get('config_admin_limit');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('report/product_purchased', 'token=' . $this->session->data['token'] . $url . '&page={page}');
-			
+
 		$this->data['pagination'] = $pagination->render();		
 		
 		$this->data['filter_date_start'] = $filter_date_start;
 		$this->data['filter_date_end'] = $filter_date_end;		
 		$this->data['filter_order_status_id'] = $filter_order_status_id;
+		$this->data['filter_order_schedule'] = $filter_order_schedule;
 		
 		$this->template = 'report/product_purchased.tpl';
 		$this->children = array(

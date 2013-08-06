@@ -1,3 +1,7 @@
+<?php 
+print_r($order_schedules);
+?>
+
 <?php echo $header; ?>
 <div id="content">
   <div class="breadcrumb">
@@ -16,6 +20,21 @@
             <input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" id="date-start" size="12" /></td>
           <td><?php echo $entry_date_end; ?>
             <input type="text" name="filter_date_end" value="<?php echo $filter_date_end; ?>" id="date-end" size="12" /></td>
+
+          <td>Schedule
+            <select name="filter_order_schedule">
+              <option value="0">Select All</option>
+              <?php foreach ($order_schedules as $order_schedule) { ?>
+              <?php if ($order_schedule['product_id'] == $filter_order_schedule) { ?>
+              <option value="<?php echo $order_schedule['product_id'] ?>" selected="selected"><?php echo $order_schedule['model'] ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $order_schedule['product_id'] ?>"><?php echo $order_schedule['model'] ?></option>
+              <?php } ?>
+
+              <?php } ?>
+            </select>
+          </td>
+
           <td><?php echo $entry_status; ?>
             <select name="filter_order_status_id">
               <option value="0"><?php echo $text_all_status; ?></option>
@@ -27,26 +46,39 @@
               <?php } ?>
               <?php } ?>
             </select></td>
+
           <td style="text-align: right;"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
         </tr>
       </table>
       <table class="list">
         <thead>
           <tr>
+            <td class="left">ID</td>
             <td class="left"><?php echo $column_name; ?></td>
+            <td class="left">Customer</td>
+            <td class="left">Confirmation No.</td>
             <td class="left"><?php echo $column_model; ?></td>
             <td class="right"><?php echo $column_quantity; ?></td>
             <td class="right"><?php echo $column_total; ?></td>
+            <td class="right">Departure Date</td>
+            <td class="right">Action</td>
           </tr>
         </thead>
         <tbody>
           <?php if ($products) { ?>
           <?php foreach ($products as $product) { ?>
           <tr>
+            <td class="left"><?php echo $product['product_id']; ?></td>
             <td class="left"><?php echo $product['name']; ?></td>
+            <td class="left"><?php echo $product['customer']; ?></td>
+            <td class="left"><?php echo $product['invoice_no']; ?></td>
             <td class="left"><?php echo $product['model']; ?></td>
             <td class="right"><?php echo $product['quantity']; ?></td>
             <td class="right"><?php echo $product['total']; ?></td>
+            <td class="right"><?php echo $product['departure_date']; ?></td>
+            <td class="right"><?php foreach ($product['action'] as $action) { ?>
+                [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
+                <?php } ?></td>
           </tr>
           <?php } ?>
           <?php } else { ?>
@@ -81,6 +113,12 @@ function filter() {
 	if (filter_order_status_id != 0) {
 		url += '&filter_order_status_id=' + encodeURIComponent(filter_order_status_id);
 	}	
+
+  var filter_order_schedule = $('select[name=\'filter_order_schedule\']').attr('value');
+
+  if (filter_order_schedule != 0) {
+    url += '&filter_order_schedule=' + encodeURIComponent(filter_order_schedule);
+  }
 
 	location = url;
 }

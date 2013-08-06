@@ -329,7 +329,12 @@
               <tr>
                 <td class="left"><?php echo $entry_quantity; ?></td>
                 <td class="left"><input type="text" name="quantity" value="1" /></td>
-              </tr>             
+              </tr>
+              <tr>
+                <td class="left">Departure Date</td>
+                <td class="left"><input type="text" name="departure_date" value="" size="12" class="date hasDatepicker">
+                </td>
+              </tr>              
             </tbody>
             <tfoot>
               <tr>
@@ -1591,6 +1596,12 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 });
 //--></script> 
 <script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
+<script type="text/javascript"><!--
+$(document).ready(function() {
+  $('.date').datepicker();
+});
+//--></script>
+
 <script type="text/javascript"><!--
 $('.date').datepicker({dateFormat: 'yy-mm-dd'});
 $('.datetime').datetimepicker({
