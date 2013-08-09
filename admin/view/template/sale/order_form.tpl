@@ -1,3 +1,6 @@
+<?php 
+print_r($order_products); 
+?>
 <?php echo $header; ?>
 <div id="content">
   <div class="breadcrumb">
@@ -14,7 +17,17 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="vtabs" class="vtabs"><a href="#tab-customer"><?php echo $tab_customer; ?></a><a href="#tab-payment"><?php echo $tab_payment; ?></a><a href="#tab-shipping"><?php echo $tab_shipping; ?></a><a href="#tab-product"><?php echo $tab_product; ?></a><a href="#tab-voucher"><?php echo $tab_voucher; ?></a><a href="#tab-total"><?php echo $tab_total; ?></a></div>
+      <div id="vtabs" class="vtabs">
+        <a href="#tab-product"><?php echo $tab_product; ?></a>
+        <a href="#tab-customer"><?php echo $tab_customer; ?></a>
+        <a href="#tab-payment"><?php echo $tab_payment; ?></a>
+
+        <a href="#tab-shipping"><?php echo $tab_shipping; ?></a>
+        
+        <a href="#tab-voucher"><?php echo $tab_voucher; ?></a>
+
+        <a href="#tab-total"><?php echo $tab_total; ?></a>
+      </div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-customer" class="vtabs-content">
           <table class="form">
@@ -174,6 +187,7 @@
             </tr>
           </table>
         </div>
+       
         <div id="tab-shipping" class="vtabs-content">
           <table class="form">
             <tr>
@@ -251,12 +265,14 @@
             </tr>
           </table>
         </div>
+        
         <div id="tab-product" class="vtabs-content">
           <table class="list">
             <thead>
               <tr>
                 <td></td>
                 <td class="left"><?php echo $column_product; ?></td>
+                <td class="left">Departure Date</td>
                 <td class="left"><?php echo $column_model; ?></td>
                 <td class="right"><?php echo $column_quantity; ?></td>
                 <td class="right"><?php echo $column_price; ?></td>
@@ -292,7 +308,12 @@
                   <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][mask]" value="<?php echo $download['mask']; ?>" />
                   <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][remaining]" value="<?php echo $download['remaining']; ?>" />
                   <?php $download_row++; ?>
-                  <?php } ?></td>
+                  <?php } ?>
+                </td>
+                <td class="left"><?php echo $order_product['departure_date']; ?>
+                  <input type="hidden" name="order_product[<?php echo $product_row; ?>][departure_date]" value="<?php echo $order_product['departure_date']; ?>" />
+                </td>
+
                 <td class="left"><?php echo $order_product['model']; ?>
                   <input type="hidden" name="order_product[<?php echo $product_row; ?>][model]" value="<?php echo $order_product['model']; ?>" /></td>
                 <td class="right"><?php echo $order_product['quantity']; ?>
@@ -332,7 +353,7 @@
               </tr>
               <tr>
                 <td class="left">Departure Date</td>
-                <td class="left"><input type="text" name="departure_date" value="" size="12" class="date hasDatepicker">
+                <td class="left"><input type="text" name="departure_date" value="" size="12" class="date"/>
                 </td>
               </tr>              
             </tbody>
@@ -344,6 +365,7 @@
             </tfoot>
           </table>
         </div>
+        
         <div id="tab-voucher" class="vtabs-content">
           <table class="list">
             <thead>
@@ -436,6 +458,7 @@
             </tfoot>
           </table>
         </div>
+       
         <div id="tab-total" class="vtabs-content">
           <table class="list">
             <thead>
@@ -1287,7 +1310,8 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 					$('input[name=\'product\']').attr('value', '');
 					$('input[name=\'product_id\']').attr('value', '');
 					$('#option td').remove();			
-					$('input[name=\'quantity\']').attr('value', '1');			
+					$('input[name=\'quantity\']').attr('value', '1');
+          $('input[name=\'departure_date\']').attr('value', '');   			
 				}
 				
 				// Voucher
@@ -1348,7 +1372,8 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 				$('input[name=\'product\']').attr('value', '');
 				$('input[name=\'product_id\']').attr('value', '');
 				$('#option td').remove();	
-				$('input[name=\'quantity\']').attr('value', '1');	
+				$('input[name=\'quantity\']').attr('value', '1');
+        $('input[name=\'departure_date\']').attr('value', ''); 
 				
 				$('input[name=\'from_name\']').attr('value', '');	
 				$('input[name=\'from_email\']').attr('value', '');	
@@ -1409,6 +1434,7 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 					}
 					
 					html += '  </td>';
+          html += '  <td class="left">' + product['departure_date'] + '<input type="hidden" name="order_product[' + product_row + '][departure_date]" value="' + product['departure_date'] + '" /></td>';
 					html += '  <td class="left">' + product['model'] + '<input type="hidden" name="order_product[' + product_row + '][model]" value="' + product['model'] + '" /></td>';
 					html += '  <td class="right">' + product['quantity'] + '<input type="hidden" name="order_product[' + product_row + '][quantity]" value="' + product['quantity'] + '" /></td>';
 					html += '  <td class="right">' + product['price'] + '<input type="hidden" name="order_product[' + product_row + '][price]" value="' + product['price'] + '" /></td>';
@@ -1596,16 +1622,16 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 });
 //--></script> 
 <script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $(document).ready(function() {
-  $('.date').datepicker();
+  //$('.date').datepicker({dateFormat: 'yy/mm/dd'});
 });
-//--></script>
+</script>
 
 <script type="text/javascript"><!--
-$('.date').datepicker({dateFormat: 'yy-mm-dd'});
+$('.date').datepicker({dateFormat: 'mm/dd/yy'});
 $('.datetime').datetimepicker({
-	dateFormat: 'yy-mm-dd',
+	dateFormat: 'mm/dd/yy',
 	timeFormat: 'h:m'
 });
 $('.time').timepicker({timeFormat: 'h:m'});

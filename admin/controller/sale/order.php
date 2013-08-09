@@ -1130,7 +1130,8 @@ class ControllerSaleOrder extends Controller {
 				'price'            => $order_product['price'],
 				'total'            => $order_product['total'],
 				'tax'              => $order_product['tax'],
-				'reward'           => $order_product['reward']
+				'reward'           => $order_product['reward'],
+				'departure_date'   => $order_product['departure_date']	
 			);
 		}
 		

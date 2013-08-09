@@ -71,7 +71,7 @@ class ControllerCheckoutManual extends Controller {
 							}
 						}
 															
-						$this->cart->add($order_product['product_id'], $order_product['quantity'], $option_data);
+						$this->cart->add($order_product['product_id'], $order_product['quantity'], $order_product['departure_date'],$option_data);
 					}
 				}
 			}
@@ -84,6 +84,11 @@ class ControllerCheckoutManual extends Controller {
 						$quantity = $this->request->post['quantity'];
 					} else {
 						$quantity = 1;
+					}
+					if (isset($this->request->post['departure_date'])) {
+						$departure_date = $this->request->post['departure_date'];
+					} else {
+						$departure_date = date("Y-m-d");
 					}
 																
 					if (isset($this->request->post['option'])) {
@@ -101,7 +106,7 @@ class ControllerCheckoutManual extends Controller {
 					}
 					
 					if (!isset($json['error']['product']['option'])) {
-						$this->cart->add($this->request->post['product_id'], $quantity, $option);
+						$this->cart->add($this->request->post['product_id'], $quantity, $departure_date ,$option);
 					}
 				}
 			}
