@@ -8,13 +8,17 @@ class ControllerReportProductPurchased extends Controller {
 		if (isset($this->request->get['filter_date_start'])) {
 			$filter_date_start = $this->request->get['filter_date_start'];
 		} else {
-			$filter_date_start = '';
+			//$filter_date_start = '';
+			$today = time();
+			$filter_date_start = date('Y-m-d',$today);
 		}
 
 		if (isset($this->request->get['filter_date_end'])) {
 			$filter_date_end = $this->request->get['filter_date_end'];
 		} else {
-			$filter_date_end = '';
+			$today = time();
+			$filter_date_end = date('Y-m-d',$today);
+			//$filter_date_end = '';
 		}
 		
 		if (isset($this->request->get['filter_order_status_id'])) {
@@ -74,6 +78,7 @@ class ControllerReportProductPurchased extends Controller {
 		$this->load->model('report/product');
 		
 		$this->data['products'] = array();
+
 		
 		$data = array(
 			'filter_date_start'	     => $filter_date_start, 
@@ -85,6 +90,8 @@ class ControllerReportProductPurchased extends Controller {
 		);
 				
 		$product_total = $this->model_report_product->getTotalPurchased($data);
+
+		$this->data['order_schedules'] = $this->model_report_product->getTotalName();
 
 		$results = $this->model_report_product->getPurchased($data);
 		
@@ -105,7 +112,9 @@ class ControllerReportProductPurchased extends Controller {
 				'product_id' => $result['product_id'],
 				'customer' => $result['firstname']." ".$result['lastname'],
 				'total'      => $this->currency->format($result['total'], $this->config->get('config_currency')),
-				'action'        => $action
+				'action'        => $action,
+				'date_added'	=> date('Y-m-d', strtotime($result['date_added'])),
+				'os_name'		=>  $result['os_name'],
 			);
 		}
 				
@@ -131,7 +140,7 @@ class ControllerReportProductPurchased extends Controller {
 		
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
-		$this->data['order_schedules'] = $this->model_report_product->getTotalModel();
+		
 		
 		$url = '';
 						
