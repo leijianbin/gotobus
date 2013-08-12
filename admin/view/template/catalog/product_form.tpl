@@ -126,6 +126,12 @@ $ean="";
             </tr>
 
             <tr>
+              <td>Price2 and Special date</td>
+              <td><input type="text" name="price_two" value="<?php echo $price_two; ?>" />
+			  <input type+"text" name="special_date" value="<?php echo $special_date?>"/>(For example: 6|7, Stand for Sat,Sunday)</td>
+            </tr>
+
+            <tr>
               <td><?php echo $entry_quantity; ?></td>
               <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="2" /></td>
             </tr>

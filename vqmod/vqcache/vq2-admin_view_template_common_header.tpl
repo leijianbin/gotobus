@@ -56,7 +56,7 @@ $(document).ready(function(){
 <div id="container">
 <div id="header">
   <div class="div1">
-    <div class="div2"><img src="view/image/logo.png" title="<?php echo $heading_title; ?>" onclick="location = '<?php echo $home; ?>'" /></div>
+    <div class="div2"><img src="view/image/logo.png" title="<?php echo $heading_title; ?>"/></div>
     <?php if ($logged) { ?>
     <div class="div3"><img src="view/image/lock.png" alt="" style="position: relative; top: 3px;" />&nbsp;<?php echo $logged; ?></div>
     <?php } ?>
@@ -65,12 +65,14 @@ $(document).ready(function(){
 
   <div id="menu">
     <ul class="left" style="display: none;">
-      <li id="dashboard"><a href="<?php echo $home; ?>" class="top"><?php echo $text_dashboard; ?></a></li>
+      <!-- <li id="dashboard"><a href="<?php echo $home; ?>" class="top"><?php echo $text_dashboard; ?></a></li> 
+      -->
+      <li id="dashboard"><a href="<?php echo $report_product_purchased; ?>" class="top"><?php echo $text_dashboard; ?></a></li>
       <li id="catalog"><a class="top"><?php echo $text_catalog; ?></a>
         <ul>
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
           <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
-          <li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
+          <!--<li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
           <li><a class="parent"><?php echo $text_attribute; ?></a>
             <ul>
               <li><a href="<?php echo $attribute; ?>"><?php echo $text_attribute; ?></a></li>
@@ -81,9 +83,11 @@ $(document).ready(function(){
           <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
           <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
           <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>
+        -->
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
         </ul>
       </li>
+      <li id="blog"><a href="<?php echo $blog; ?>" class="top">Bus Station</a></li> 
       <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
           <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
@@ -96,7 +100,7 @@ $(document).ready(function(){
       <li id="sale"><a class="top"><?php echo $text_sale; ?></a>
         <ul>
           <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-          <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
+          <!-- <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
           <li><a class="parent"><?php echo $text_customer; ?></a>
             <ul>
               <li><a href="<?php echo $customer; ?>"><?php echo $text_customer; ?></a></li>
@@ -112,7 +116,9 @@ $(document).ready(function(){
               <li><a href="<?php echo $voucher_theme; ?>"><?php echo $text_voucher_theme; ?></a></li>
             </ul>
           </li>
+
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+          -->
         </ul>
       </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
@@ -185,14 +191,17 @@ $(document).ready(function(){
               <li><a href="<?php echo $report_customer_credit; ?>"><?php echo $text_report_customer_credit; ?></a></li>
             </ul>
           </li>
-          <li><a class="parent"><?php echo $text_affiliate; ?></a>
+          <!--<li><a class="parent"><?php echo $text_affiliate; ?></a>
             <ul>
               <li><a href="<?php echo $report_affiliate_commission; ?>"><?php echo $text_report_affiliate_commission; ?></a></li>
+            -->
             </ul>
           </li>
         </ul>
       </li>
-      <li id="blog"><a href="<?php echo $blog; ?>" class="top">Bus Station</a></li> 
+
+      <!--
+<li id="blog"><a href="<?php echo $blog; ?>" class="top">Bus Station</a></li> 
       <li id="help"><a class="top"><?php echo $text_help; ?></a>
         <ul>
           <li><a href="http://www.opencart.com" target="_blank"><?php echo $text_opencart; ?></a></li>
@@ -200,6 +209,7 @@ $(document).ready(function(){
           <li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
         </ul>
       </li>
+      -->
     </ul>
     <ul class="right" style="display: none;">
       <li id="store"><a href="<?php echo $store; ?>" target="_blank" class="top"><?php echo $text_front; ?></a>
