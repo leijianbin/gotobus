@@ -26,9 +26,9 @@ print_r($order_schedules);
               <option value="0">Select All</option>
               <?php foreach ($order_schedules as $order_schedule) { ?>
               <?php if ($order_schedule['product_id'] == $filter_order_schedule) { ?>
-              <option value="<?php echo $order_schedule['product_id'] ?>" selected="selected"><?php echo $order_schedule['model'] ?></option>
+              <option value="<?php echo $order_schedule['product_id'] ?>" selected="selected"><?php echo $order_schedule['name'] ?></option>
               <?php } else { ?>
-              <option value="<?php echo $order_schedule['product_id'] ?>"><?php echo $order_schedule['model'] ?></option>
+              <option value="<?php echo $order_schedule['product_id'] ?>"><?php echo $order_schedule['name'] ?></option>
               <?php } ?>
 
               <?php } ?>
@@ -53,14 +53,15 @@ print_r($order_schedules);
       <table class="list">
         <thead>
           <tr>
-            <td class="left">ID</td>
+            <!-- <td class="left">ID</td> -->
             <td class="left"><?php echo $column_name; ?></td>
             <td class="left">Customer</td>
+            <td class="right">Departure Date</td>
             <td class="left">Confirmation No.</td>
-            <td class="left"><?php echo $column_model; ?></td>
+            <td class="left">Satus</td>
             <td class="right"><?php echo $column_quantity; ?></td>
             <td class="right"><?php echo $column_total; ?></td>
-            <td class="right">Departure Date</td>
+            <td class="right">Sold Date</td>
             <td class="right">Action</td>
           </tr>
         </thead>
@@ -68,14 +69,15 @@ print_r($order_schedules);
           <?php if ($products) { ?>
           <?php foreach ($products as $product) { ?>
           <tr>
-            <td class="left"><?php echo $product['product_id']; ?></td>
+            <!-- <td class="left"><?php echo $product['product_id']; ?></td> -->
             <td class="left"><?php echo $product['name']; ?></td>
             <td class="left"><?php echo $product['customer']; ?></td>
+            <td class="right"><?php echo $product['departure_date']; ?></td>
             <td class="left"><?php echo $product['invoice_no']; ?></td>
-            <td class="left"><?php echo $product['model']; ?></td>
+            <td class="left"><?php echo $product['os_name']; ?></td>
             <td class="right"><?php echo $product['quantity']; ?></td>
             <td class="right"><?php echo $product['total']; ?></td>
-            <td class="right"><?php echo $product['departure_date']; ?></td>
+            <td class="right"><?php echo $product['date_added']; ?></td>
             <td class="right"><?php foreach ($product['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
@@ -83,7 +85,7 @@ print_r($order_schedules);
           <?php } ?>
           <?php } else { ?>
           <tr>
-            <td class="center" colspan="4"><?php echo $text_no_results; ?></td>
+            <td class="center" colspan="9"><?php echo $text_no_results; ?></td>
           </tr>
           <?php } ?>
         </tbody>

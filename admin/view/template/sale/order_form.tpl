@@ -1,5 +1,6 @@
 <?php 
 print_r($order_products); 
+print_r($order_statuses);
 ?>
 <?php echo $header; ?>
 <div id="content">
@@ -1398,6 +1399,7 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 				
 				for (i = 0; i < json['order_product'].length; i++) {
 					product = json['order_product'][i];
+          console.log(product);
 					
 					html += '<tr id="product-row' + product_row + '">';
 					html += '  <td class="center" style="width: 3px;"><img src="view/image/delete.png" title="<?php echo $button_remove; ?>" alt="<?php echo $button_remove; ?>" style="cursor: pointer;" onclick="$(\'#product-row' + product_row + '\').remove(); $(\'#button-update\').trigger(\'click\');" /></td>';
@@ -1629,9 +1631,9 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript"><!--
-$('.date').datepicker({dateFormat: 'mm/dd/yy'});
+$('.date').datepicker({dateFormat: 'yy-mm-dd'});
 $('.datetime').datetimepicker({
-	dateFormat: 'mm/dd/yy',
+	dateFormat: 'yy-mm-dd',
 	timeFormat: 'h:m'
 });
 $('.time').timepicker({timeFormat: 'h:m'});
