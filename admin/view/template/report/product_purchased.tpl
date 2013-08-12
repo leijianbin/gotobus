@@ -1,5 +1,11 @@
 <?php 
-print_r($order_schedules);
+//print_r($order_schedules);
+//echo "<br/>";
+//echo "<br/>";
+//print_r($current_schedules);
+//echo "<br/>";
+//echo "<br/>";
+//print_r($products);
 ?>
 
 <?php echo $header; ?>
@@ -50,6 +56,9 @@ print_r($order_schedules);
           <td style="text-align: right;"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
         </tr>
       </table>
+      
+      <?php foreach ($current_schedules as $current_schedule) { 
+      $subtotal = 0; ?>
       <table class="list">
         <thead>
           <tr>
@@ -67,7 +76,11 @@ print_r($order_schedules);
         </thead>
         <tbody>
           <?php if ($products) { ?>
-          <?php foreach ($products as $product) { ?>
+          <?php foreach ($products as $product) { 
+            
+          ?>
+
+          <?php if($product['name'] == $current_schedule['name']) { ?>
           <tr>
             <!-- <td class="left"><?php echo $product['product_id']; ?></td> -->
             <td class="left"><?php echo $product['name']; ?></td>
@@ -82,14 +95,23 @@ print_r($order_schedules);
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
           </tr>
-          <?php } ?>
+          <?php 
+          $price = (int)str_replace( '$', '', $product['total']);
+          $subtotal = $subtotal + $price; ?>
+          <?php }?>
+          
+          <?php }?>
+          <tr> <td>Sub Total: $<?php echo $subtotal; ?> </td></tr>  
           <?php } else { ?>
           <tr>
             <td class="center" colspan="9"><?php echo $text_no_results; ?></td>
           </tr>
-          <?php } ?>
+          <?php } ?> 
         </tbody>
+        
       </table>
+      <?php } ?>
+
       <div class="pagination"><?php echo $pagination; ?></div>
     </div>
   </div>

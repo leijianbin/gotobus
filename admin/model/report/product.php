@@ -73,8 +73,8 @@ class ModelReportProduct extends Model {
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
 
-		echo $sql;
-		echo "<br/>";
+		//echo $sql;
+		//echo "<br/>";
 		
 		$query = $this->db->query($sql);
 	

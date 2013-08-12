@@ -1,6 +1,6 @@
 <?php 
-print_r($order_products); 
-print_r($order_statuses);
+//print_r($order_products); 
+//print_r($order_statuses);
 ?>
 <?php echo $header; ?>
 <div id="content">

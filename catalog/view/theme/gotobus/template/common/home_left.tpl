@@ -401,7 +401,7 @@ $(".date").datepicker({
   onClose: function(dates) { 
     if(dates != ''){
             var someDate = new Date(dates); // add arguments as needed
-            someDate.setTime(someDate.getTime() + 1000*24*60*60);
+            someDate.setTime(someDate.getTime() + 2000*24*60*60);
             var date_return = $(".date-return").attr('value');
             if(date_return == '')
             {

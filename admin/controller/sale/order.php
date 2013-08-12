@@ -118,7 +118,8 @@ class ControllerSaleOrder extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('sale/order', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			//$this->redirect($this->url->link('sale/order', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('report/product_purchased', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 		
     	$this->getForm();

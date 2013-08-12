@@ -192,7 +192,7 @@ $(document).ready(function(){
           </li>
         </ul>
       </li>
-<li id="blog"><a href="<?php echo $blog; ?>" class="top">Bus Station</a></li> 
+      <li id="blog"><a href="<?php echo $blog; ?>" class="top">Bus Station</a></li> 
       <li id="help"><a class="top"><?php echo $text_help; ?></a>
         <ul>
           <li><a href="http://www.opencart.com" target="_blank"><?php echo $text_opencart; ?></a></li>

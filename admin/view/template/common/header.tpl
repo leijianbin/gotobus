@@ -86,6 +86,7 @@ $(document).ready(function(){
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
         </ul>
       </li>
+      <li id="blog"><a href="<?php echo $blog; ?>" class="top">Bus Station</a></li> 
       <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
           <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
@@ -194,6 +195,7 @@ $(document).ready(function(){
           </li>
         </ul>
       </li>
+
       <!--
       <li id="help"><a class="top"><?php echo $text_help; ?></a>
         <ul>
@@ -202,7 +204,7 @@ $(document).ready(function(){
           <li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
         </ul>
       </li>
-    -->
+      -->
     </ul>
     <ul class="right" style="display: none;">
       <li id="store"><a href="<?php echo $store; ?>" target="_blank" class="top"><?php echo $text_front; ?></a>

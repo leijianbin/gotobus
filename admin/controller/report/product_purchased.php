@@ -92,6 +92,24 @@ class ControllerReportProductPurchased extends Controller {
 		$product_total = $this->model_report_product->getTotalPurchased($data);
 
 		$this->data['order_schedules'] = $this->model_report_product->getTotalName();
+		//$this->data['current_schedules'] = $this->model_report_product->getTotalName();
+
+
+		if(empty($filter_order_schedule))
+		{
+			$this->data['current_schedules'] = $this->model_report_product->getTotalName();
+		}
+		else 
+		{
+			foreach($this->data['order_schedules'] as $current_schedule)
+			{
+				if($current_schedule['product_id'] == $filter_order_schedule)
+				{
+					$this->data['current_schedules'] = array($current_schedule);
+				}
+			}
+		}  
+
 
 		$results = $this->model_report_product->getPurchased($data);
 		
