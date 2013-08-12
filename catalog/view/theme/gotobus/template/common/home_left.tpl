@@ -396,7 +396,8 @@ var dateToday = new Date();
 
 $(".date").datepicker({
   minDate: dateToday,
-  dateFormat: 'mm/dd/yy',
+  //dateFormat: 'mm/dd/yy',
+  dateFormat: 'yy-mm-dd',
   onClose: function(dates) { 
     if(dates != ''){
             var someDate = new Date(dates); // add arguments as needed
@@ -404,7 +405,7 @@ $(".date").datepicker({
             var date_return = $(".date-return").attr('value');
             if(date_return == '')
             {
-              $(".date-return").val($.datepicker.formatDate('mm/dd/yy',someDate));
+              $(".date-return").val($.datepicker.formatDate('yy-mm-dd',someDate));
             }
             date_origin = $('.date').val();
           }
@@ -414,7 +415,7 @@ $(".date").datepicker({
 
 $(".date-return").datepicker({
   minDate: dateToday,
-  dateFormat: 'mm/dd/yy',
+  dateFormat: 'yy-mm-dd',
   onClose: function(dates) { 
     if(dates != ''){
             var someDate_return = new Date(dates); // add arguments as needed
@@ -423,7 +424,7 @@ $(".date-return").datepicker({
             var date = $(".date").attr('value');
             if(date == '')
             {
-              $(".date").val($.datepicker.formatDate('mm/dd/yy',someDate));
+              $(".date").val($.datepicker.formatDate('yy-mm-dd',someDate));
             }
             date_origin_return = $(".date_return").val();
           }
