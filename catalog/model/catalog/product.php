@@ -116,14 +116,17 @@ class ModelCatalogProduct extends Model {
 			}
 
 			if (!empty($data['filter_category_arrival_id'])) {
-				$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_arrival_id'] . ")" ; 
+				$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_arrival_id'] . " AND p.status = '1')" ; 
 			}
 
 		if ($data['filter_name'] == "round-trip")
 		{
 			$sql .= " OR ( p2c.category_id = " . $data['filter_category_arrival_id']. " AND p.product_id = p2c.product_id" ; 
-			$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_id'] . ")" ; 
+			$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_id'] . " AND p.status = '1')" ; 
 		}
+
+		//$sql .= " AND p.status = '1'";
+		//echo $sql;
 
 		$query = $this->db->query($sql);
 		
