@@ -53,8 +53,8 @@ $(document).ready(function() {
                 <ul>
                     <li>Dear<strong>&nbsp;<?php echo $firstname;?>&nbsp;<?php echo $lastname;?>&nbsp;</strong>( Tel : <?php echo $telephone;?> )</li>
                     <li><span class="blue">Total charged amount :</span><span class="red"> $<?php echo (int)$total;?></span></li>
-                    <li>Here is your bus e-Tickets from gotobustour.com to redeem, please bring a printout of this ticket along with a valid photo ID.</li>
-                    <li><span class="blue">REMARKS :</span> Ptease show your e-ticket or confirmation number to obtain your Boarding Pass from your departure office.</li>
+                    <li>Here is your bus e-Tickets from gotobustour.com To redeem, please bring a printout of this ticket along with a valid photo ID.</li>
+                    <li><span class="blue">REMARKS :</span> Please show your e-ticket or confirmation number to obtain your Boarding Pass from your departure office.</li>
                     <li><strong>E-Ticket Details</strong></li>
                     <li><span class="blue">Bus Route : </span><?php echo $products[0]['name'];?></li>
                     <li><span class="blue">Number of Passengers :</span> <?php echo $products[0]['quantity'];?></li>
@@ -94,10 +94,10 @@ $(document).ready(function() {
             <div class="box5">
             	<div class="title">Terms, Conditions and contact lnfo</div>
                 <ul class="someinfo">
-                	<li>1. Ptease bring a valid lD and this e-ticket with your signature to board this bus</li>
+                	<li>1. Please bring a valid lD and this e-ticket with your signature to board this bus</li>
                     <li>2. Please arrive 20 minutes before departure, or you lose reservation priority.</li>
-                    <li>3. Tickets are not refundable or exchangeabte, canceltation incurs 100% penalty</li>
-                    <li>4. For questions, ptease call customer service at 716-835-7835</li>
+                    <li>3. Tickets are not refundable or exchangeable, cancellation incurs 100% penalty</li>
+                    <li>4. For questions, please call customer service at 716-835-7835</li>
                 </ul>
             </div></br></br>
             <div class="box6">

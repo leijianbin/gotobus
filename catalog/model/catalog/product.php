@@ -136,15 +136,13 @@ class ModelCatalogProduct extends Model {
 		{
 			$sql = "SELECT DISTINCT p.* , p2c.* FROM product p, product_to_category p2c";
 			$sql .= " WHERE ( p2c.category_id = " . $data['filter_category_arrival_id']. " AND p.product_id = p2c.product_id" ; 
-			$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_id'] . ")" ; 
+			$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_id']  . " AND p.status = '1')"; 
 		$query = $this->db->query($sql);
 		
 		foreach ($query->rows as $result) { 		
 			$product_data[$result['product_id']] = $this->getProduct($result['product_id'],$data['filter_return_date']);
 		}
-	}
-
-			
+	}		
 		return $product_data;
 
 		// Add test coding
