@@ -61,7 +61,7 @@ class ControllerProductSearch extends Controller {
 			$filter_return_date = 0;
 		} 
 
-		// add filter_date and filter_return_date
+    		// add filter_date and filter_return_date
 
 		if (isset($this->request->get['sub_category'])) {
 			$sub_category = $this->request->get['sub_category'];
@@ -262,9 +262,11 @@ class ControllerProductSearch extends Controller {
 				
 				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 					$price = $result['price'];
+	
 					//$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
 				} else {
 					$price = false;
+	
 				}
 				/*
 				if ((float)$result['special']) {

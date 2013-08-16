@@ -17,8 +17,7 @@ print_r($search);
 print "</br>";
 print_r($categories);
 */
-print_r($product);
-
+//print_r($product);
 ?>
 
 <?php echo $column_left; ?>

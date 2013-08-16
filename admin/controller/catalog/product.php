@@ -882,7 +882,23 @@ class ControllerCatalogProduct extends Controller {
 		} else {
       		$this->data['price'] = '';
     	}
-		
+			if (isset($this->request->post['price_two'])) {
+      		$this->data['price_two'] = $this->request->post['price_two'];
+    	} elseif (!empty($product_info)) {
+			$this->data['price_two'] = $product_info['price_two'];
+		} else {
+      		$this->data['price_two'] = '';
+    	}
+
+    	if (isset($this->request->post['special_date'])) {
+      		$this->data['special_date'] = $this->request->post['special_date'];
+    	} elseif (!empty($product_info)) {
+			$this->data['special_date'] = $product_info['special_date'];
+		} else {
+      		$this->data['special_date'] = '';
+    	}
+
+	
 		$this->load->model('localisation/tax_class');
 		
 		$this->data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();

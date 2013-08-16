@@ -125,7 +125,7 @@ class ControllerProductBusConfirm extends Controller {
 
 
 		if($bus_id){
-			$result = $this->model_catalog_product->getProduct($bus_id,$filter_date);
+			$result = $this->model_catalog_product->getProduct($bus_id);
 
 			$this->data['product'] = array(
 				'bus_id'  => $bus_id,
@@ -145,7 +145,7 @@ class ControllerProductBusConfirm extends Controller {
 			//如果有回程。查询回程
 		if($bus_id_return){
 
-			$result = $this->model_catalog_product->getProduct($bus_id_return,$filter_date_return);
+			$result = $this->model_catalog_product->getProduct($bus_id_return);
 
 			$this->data['product_return'] = array(
 				'bus_id_return'  => $bus_id_return,

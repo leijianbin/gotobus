@@ -4,7 +4,7 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}
 	
-	public function getProduct($product_id) {
+	public function getProduct($product_id,$ticket_date) {
 		if ($this->customer->isLogged()) {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
@@ -19,6 +19,15 @@ class ModelCatalogProduct extends Model {
 		$query = $this->db->query($sql);
 
 		if ($query->num_rows) {
+				$ticket_week_day=date("w",strtotime($ticket_date));
+				if ($ticket_week_day=="0"){
+						$ticket_week_day="7";
+					}
+				if(in_array($ticket_week_day,explode("|",$query->row['special_date']))){
+					$is_special_date=1;
+				}else{
+					$is_special_date=0;
+				}
 			return array(
 				'product_id'       => $query->row['product_id'],
 				'name'             => $query->row['name'],
@@ -28,7 +37,7 @@ class ModelCatalogProduct extends Model {
 				'quantity'         => $query->row['quantity'],
 				//'stock_status'     => $query->row['stock_status'],
 				'image'            => $query->row['image'],
-				'price'            => $query->row['price'],
+				'price'            => $is_special_date ? $query->row['price_two']:$query->row['price'],
 				'date_available'   => $query->row['date_available'],
 				'subtract'         => $query->row['subtract'],
 				'sort_order'       => $query->row['sort_order'],
@@ -119,21 +128,23 @@ class ModelCatalogProduct extends Model {
 				$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_arrival_id'] . " AND p.status = '1')" ; 
 			}
 
+		$query = $this->db->query($sql);
+		foreach ($query->rows as $result) { 		
+			$product_data[$result['product_id']] = $this->getProduct($result['product_id'],$data['filter_date']);
+		}
 		if ($data['filter_name'] == "round-trip")
 		{
-			$sql .= " OR ( p2c.category_id = " . $data['filter_category_arrival_id']. " AND p.product_id = p2c.product_id" ; 
-			$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_id'] . " AND p.status = '1')" ; 
-		}
-
-		//$sql .= " AND p.status = '1'";
-		//echo $sql;
-
+			$sql = "SELECT DISTINCT p.* , p2c.* FROM product p, product_to_category p2c";
+			$sql .= " WHERE ( p2c.category_id = " . $data['filter_category_arrival_id']. " AND p.product_id = p2c.product_id" ; 
+			$sql .= " AND p2c.category_arrival_id = " . $data['filter_category_id'] . ")" ; 
 		$query = $this->db->query($sql);
 		
 		foreach ($query->rows as $result) { 		
-			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
+			$product_data[$result['product_id']] = $this->getProduct($result['product_id'],$data['filter_return_date']);
 		}
-		
+	}
+
+			
 		return $product_data;
 
 		// Add test coding
@@ -313,6 +324,7 @@ class ModelCatalogProduct extends Model {
 			'pd.name',
 			'p.model',
 			'ps.price',
+			'ps.price_two',
 			'rating',
 			'p.sort_order'
 		);

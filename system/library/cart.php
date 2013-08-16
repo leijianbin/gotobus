@@ -166,8 +166,11 @@ class Cart {
 					} else {
 						$customer_group_id = $this->config->get('config_customer_group_id');
 					}
-					
-					$price = $product_query->row['price'];
+					$departure_week_day=date("w",strtotime($departure_date));
+					if($departure_week_day=="0"){
+						$departure_week_day="7";
+						}
+					$price = in_array($departure_week_day,explode("|",$product_query->row['special_date']))?$product_query->row['price_two']:$product_query->row['price'];
 					
 					// Product Discounts
 					$discount_quantity = 0;

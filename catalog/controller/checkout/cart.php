@@ -23,7 +23,17 @@ class ControllerCheckoutCart extends Controller {
 			
 			$this->redirect($this->url->link('checkout/cart'));  			
 		}
-       	
+       	if (isset($this->request->post['filter_date'])) {
+			$filter_date = $this->request->post['filter_date'];
+		} else {
+			$filter_date = 0;
+		} 
+		
+		if (isset($this->request->post['filter_date_return'])) {
+			$filter_date_return = $this->request->post['filter_date_return'];
+		} else {
+			$filter_date_return = 0;
+		} 
 		// Remove
 		if (isset($this->request->get['remove'])) {
 			$this->cart->remove($this->request->get['remove']);
@@ -525,7 +535,7 @@ class ControllerCheckoutCart extends Controller {
 			$filter_date = "";
 		}
 			
-		$product_info = $this->model_catalog_product->getProduct($product_id);
+		$product_info = $this->model_catalog_product->getProduct($product_id,$filter_date);
 
 		if ($product_info) {
 			if (isset($this->request->get['quantity'])) {
@@ -566,7 +576,7 @@ class ControllerCheckoutCart extends Controller {
 			$filter_date_return = 0;
 		}
 			
-		$product_return_info = $this->model_catalog_product->getProduct($product_return_id);
+		$product_return_info = $this->model_catalog_product->getProduct($product_return_id,$filter_date_return);
 
 		if ($product_return_info) {
 			if (isset($this->request->get['quantity'])) {
