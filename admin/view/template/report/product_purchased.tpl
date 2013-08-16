@@ -2,10 +2,27 @@
 //print_r($order_schedules);
 //echo "<br/>";
 //echo "<br/>";
+//echo "<pre>";
 //print_r($current_schedules);
+//echo "</pre>";
 //echo "<br/>";
 //echo "<br/>";
+//echo "<pre>";
 //print_r($products);
+//echo "</pre>";
+$exit_schedules = array();
+
+if($products)
+{
+  foreach ($products as $product) {
+    $schedule_array = array();
+    $schedule_array['name'] = $product['name'];
+    $schedule_array['product_id'] = $product['product_id'];
+    if(in_array($schedule_array,$current_schedules) && !in_array($schedule_array,$exit_schedules))
+      $exit_schedules[]= $schedule_array;
+  }
+}
+
 ?>
 
 <?php echo $header; ?>
@@ -57,8 +74,11 @@
         </tr>
       </table>
       
-      <?php foreach ($current_schedules as $current_schedule) { 
-      $subtotal = 0; ?>
+      <?php foreach ($exit_schedules as $current_schedule) { 
+            $subtotal = 0; 
+            //print_r($current_schedule);
+            if(true) {
+      ?>
       <table class="list">
         <thead>
           <tr>
@@ -110,7 +130,8 @@
         </tbody>
         
       </table>
-      <?php } ?>
+
+      <?php }} ?>
 
       <div class="pagination"><?php echo $pagination; ?></div>
     </div>
