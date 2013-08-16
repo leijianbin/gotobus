@@ -17,6 +17,8 @@ print_r($search);
 print "</br>";
 print_r($categories);
 */
+print_r($product);
+
 ?>
 
 <?php echo $column_left; ?>
@@ -49,15 +51,53 @@ print_r($categories);
                        </li>
                        <li>
                            <ul>
-                               <li class="sheetleft">Departure Time</li>
-                               <li class="sheetright"><?php echo $product['departure_date'] ?>&nbsp;<?php echo $product['departure_time'] ; ?></li>
-                               <li class="sheetleft">Drive Time</li>
-                               <?php 
+                            <?php 
                                $start = explode(" ", $product['departure_time']);
                                $arrive = explode(" ", $product['arrive_time']);
-                               $last = intval($arrive[0]) - intval($start[0]); 
+
+                               $starthour = explode(":", $start[0]);
+                               $arrivehour = explode(":", $arrive[0]);
+                               //var_dump($starthour); 
+                               //echo $starttime = intval($start[0]);
+                               if($start[1]=="PM"&&$arrive[1]=="AM")
+                               {
+                                  $arrivetime = intval($arrivehour[0]) + 24;
+                                  $starttime = intval($start[0]) + 12;
+                                  $arrive_date  = strtotime($product['departure_date']) + 3600*24;
+                                  $product['arrive_date'] = date('Y-m-d',$arrive_date);
+                               }
+                               else if($start[1]=="AM"&&$arrive[1]=="PM")
+                               {
+                                  $arrivetime = intval($arrivehour[0]) + 12;
+                                  $starttime = intval($start[0]);
+                                  $product['arrive_date'] = $product['departure_date'];
+                               }                         
+                               else
+                               {
+                                  $arrivetime = intval($arrivehour[0]);
+                                  $starttime = intval($start[0]);
+                                  $product['arrive_date'] = $product['departure_date'];
+                               }
+                               //echo $arrivetime;
+                               //echo $starttime;
+                               $lasthour = intval( (( $arrivetime * 60 + intval($arrivehour[1]))  - ($starttime * 60 + intval($starthour[1])) ) / 60 ); 
+
+                               $lastminute = ( ( $arrivetime * 60 + intval($arrivehour[1])) - ($starttime * 60 + intval($starthour[1])) ) % 60; 
                                ?>
-                               <li class="sheetright"><?php echo $last;?> (hours)</li>
+
+                               <li class="sheetleft">Departure Time</li>
+                               <li class="sheetright"><?php echo $product['departure_date'] ?>&nbsp;<?php echo $product['departure_time'] ; ?></li>
+
+                               <li class="sheetleft">Arrival Time</li>
+                               <li class="sheetright"><?php echo $product['arrive_date'] ?>&nbsp;<?php echo $product['arrive_time'] ; ?></li>
+
+
+                               <li class="sheetleft">Travel Time</li>
+
+                               <li class="sheetright"><?php echo $lasthour;?> (hours) <?php echo $lastminute;?> (minutes)</li>
+
+                               <li class="sheetleft"></li>
+                               <li class="sheetright"></li>
                            </ul>
                        </li>
                        <li>
@@ -108,15 +148,51 @@ print_r($categories);
                            </li>
                            <li>
                                <ul>
-                                   <li class="sheetleft">Departure Time</li>
-                                   <li class="sheetright"><?php echo $product_return['departure_date'] ?>&nbsp;<?php echo $product_return['departure_time'] ; ?></li>
-                                   <li class="sheetleft">Drive Time</li>
-                                   <?php 
+                               <?php 
+                               //echo $product_return['departure_time'];
+                               //echo $product_return['arrive_time'];
                                $start = explode(" ", $product_return['departure_time']);
                                $arrive = explode(" ", $product_return['arrive_time']);
-                               $last = intval($arrive[0]) - intval($start[0]); 
+
+                               $starthour = explode(":", $start[0]);
+                               $arrivehour = explode(":", $arrive[0]);
+                               //var_dump($starthour); 
+                               //echo $starttime = intval($start[0]);
+                               if($start[1]=="PM"&&$arrive[1]=="AM")
+                               {
+                                  $arrivetime = intval($arrivehour[0]) + 24;
+                                  $starttime = intval($start[0]) + 12;
+                                  $product_return['arrive_date'] = $product_return['departure_date'];
+                               }
+                               else if($start[1]=="AM"&&$arrive[1]=="PM")
+                               {
+                                  $arrivetime = intval($arrivehour[0]) + 12;
+                                  $starttime = intval($start[0]);
+                                  $product_return['arrive_date'] = $product_return['departure_date'];
+                               }                         
+                               else
+                               {
+                                  $arrivetime = intval($arrivehour[0]);
+                                  $starttime = intval($start[0]);
+                                  $product_return['arrive_date'] = $product_return['departure_date'];
+                               }
+                               //echo $arrivetime;
+                               //echo $starttime;
+                               $lasthour = intval( (( $arrivetime * 60 + intval($arrivehour[1]))  - ($starttime * 60 + intval($starthour[1])) ) / 60 ); 
+
+                               $lastminute = ( ( $arrivetime * 60 + intval($arrivehour[1])) - ($starttime * 60 + intval($starthour[1])) ) % 60; 
                                ?>
-                                   <li class="sheetright"><?php echo $last;?> (hours)</li>
+                                   <li class="sheetleft">Departure Time</li>
+                                   <li class="sheetright"><?php echo $product_return['departure_date'] ?>&nbsp;<?php echo $product_return['departure_time'] ; ?></li>
+
+                                    <li class="sheetleft">Arrival Time</li>
+                                    <li class="sheetright"><?php echo $product_return['arrive_date'] ?>&nbsp;<?php echo $product_return['arrive_time'] ; ?></li>
+
+                                   <li class="sheetleft">Travel Time</li>
+                                   <li class="sheetright"><?php echo $lasthour;?> (hours) <?php echo $lastminute;?> (minutes)</li>
+
+                               <li class="sheetleft"></li>
+                               <li class="sheetright"></li>
                                </ul>
                            </li>
                            <li>
@@ -152,11 +228,16 @@ print_r($categories);
                    </div>
                    <div class="clear"></div>
            </div>
-           <?php }?>
+           <?php  
+           } else {
+              $product_return['quantity'] = 0;
+              $product_return['price'] = 0;
+            }
+           ?>
            <div class="sheettotal">
                     <ul>
                         <li class="totalname">Tickets</li>
-                        <li class="totalprice"><?php echo intval($product['quantity']*2)?></li>
+                        <li class="totalprice"><?php echo intval($product['quantity'])+ intval($product_return['quantity'])?></li>
                         <li class="totalname">Total Price</li>
                         <li class="totalprice">$<?php echo intval($product['quantity']) * intval($product['price']) + intval($product_return['quantity']) * intval($product_return['price']) ?></li>
                     </ul>
@@ -167,7 +248,6 @@ print_r($categories);
    </div>
 
 </div>
-
 
 </div>
 
