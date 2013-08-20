@@ -369,7 +369,9 @@ class ControllerAccountOrder extends Controller {
 					);					
         		}*/
 
-        		$orderOption = $this->model_account_order->getOrderProduct($this->request->get['order_id'], $product['product_id']);
+        		$orderOptions = $this->model_account_order->getOrderProduct($this->request->get['order_id'], $product['product_id']);
+
+        		foreach ($orderOptions as $orderOption) {
 
         		$this->data['products'][] = array(
         			'product_id' => $product['product_id'],
@@ -378,16 +380,19 @@ class ControllerAccountOrder extends Controller {
           			'model'    => $product['model'],
           			//'option'   => $option_data,
           			//'quantity' => $product['quantity'],
-          			'quantity' => $orderOption[0]['quantity'],
+          			'quantity' => $orderOption['quantity'],
           			'price'    => $product['price'], 
-					'total'    => $orderOption[0]['total'],
-					'departure_date'    => $orderOption[0]['departure_date'],
+					'total'    => $orderOption['total'],
+					'departure_date'    => $orderOption['departure_date'],
 					'departure_time'    => $product['departure_time'],
 					'arrive_time'    => $product['arrive_time'],
 					'arrive_station'    => $product['arrive_station'],
 					'departure_station' => $product['departure_station'],
+					'customer'			=> $orderOption['customer'],
+					'confirm_no'			=> $orderOption['confirm_no'],
 					//'return'   => $this->url->link('account/return/insert', 'order_id=' . $order_info['order_id'] . '&product_id=' . $product['product_id'], 'SSL')
         		);
+        		}
       		}
 
 			// Voucher

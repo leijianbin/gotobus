@@ -33,6 +33,12 @@ class Cart {
 					$departure_date = "";
 					$options = array();
 					//$options = array();
+				}
+				if (isset($product[2])) {
+					//$options = unserialize(base64_decode($product[1]));
+					$customer = $product[2];
+				} else {
+					$customer = "";
 				} 
 
 				
@@ -249,7 +255,8 @@ class Cart {
 						'width'           => $product_query->row['width'],
 						'height'          => $product_query->row['height'],
 						'length_class_id' => $product_query->row['length_class_id'],	
-						'departure_date'  => $departure_date
+						'departure_date'  => $departure_date,
+						'customer'		  => $customer
 					);
 				} else {
 					$this->remove($key);
@@ -260,7 +267,7 @@ class Cart {
 		return $this->data;
   	}
 		  
-  	public function add($product_id, $qty = 1, $date = "",$option = array()) {
+  	public function add($product_id, $qty = 1, $date = "", $customer ="", $option = array()) {
     	/*
     	
     	 if (!$option) {
@@ -269,7 +276,9 @@ class Cart {
       		$key = (int)$product_id . ':' . base64_encode(serialize($option));
     	}
     	*/
-    	$key = (int)$product_id . ':' . $date;
+    	$ran = rand();
+
+    	$key = (int)$product_id . ':' . $date . ':' . $customer . ':' . $ran;
 
 		if ((int)$qty && ((int)$qty > 0)) {
     		if (!isset($this->session->data['cart'][$key])) {

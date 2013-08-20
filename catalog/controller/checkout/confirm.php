@@ -217,11 +217,16 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 			
 			$product_data = array();
-		
+			
+			$this->load->model('checkout/order');//for confirmation number;
+
 			foreach ($this->cart->getProducts() as $product) {
 				$option_data = array();
 
 				$this->data['departure_date'] = $product['departure_date'];
+				$this->data['customer'] = $product['customer'];
+
+				$confirm_no = $this->model_checkout_order->createConfirmNo();
 	
 				foreach ($product['option'] as $option) {
 					if ($option['type'] != 'file') {
@@ -253,7 +258,9 @@ class ControllerCheckoutConfirm extends Controller {
 					'total'      => $product['total'],
 					'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
 					'reward'     => $product['reward'],
-					'departure_date' => $product['departure_date']
+					'departure_date' => $product['departure_date'],
+					'customer' 	 => $product['customer'],
+					'confirm_no' => $confirm_no
 				); 
 			}
 			
@@ -327,7 +334,7 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 
 						
-			$this->load->model('checkout/order');
+			
 
 			//add comfirmation number	
 			$invoice_no = $this->model_checkout_order->createInvoiceNo();
@@ -379,6 +386,7 @@ class ControllerCheckoutConfirm extends Controller {
 					'price'      => $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'))),
 					'total'      => $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity']),
 					'departure_date' => $product['departure_date'],
+					'customer' => $product['customer'],
 					'href'       => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 				); 
 			} 

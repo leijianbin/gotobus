@@ -521,7 +521,7 @@ class ControllerCheckoutCart extends Controller {
 		// 
 		$this->cart->clear(); //clear preview products
 		//clear preview products. You can't update the cart, you can only rebook it.
-
+		//$customers = array();
 		// book the departure ticket
 		if (isset($this->request->get['product_id'])) {
 			$product_id = $this->request->get['product_id'];
@@ -557,9 +557,22 @@ class ControllerCheckoutCart extends Controller {
 					$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
 				}
 			}
-			$date = $filter_date;
 
-			$this->cart->add($this->request->get['product_id'], $quantity, $date, $option);
+			$date = $filter_date;
+			//add customer name to the cart
+
+			for( $i = 1; $i <= $quantity; $i++)
+			{
+				if (isset($this->request->get['customer'.$i])) {
+					$customer = $this->request->get['customer'.$i];
+				} else {
+					$customer = "";	
+				}
+
+				$this->cart->add($this->request->get['product_id'], 1, $date, $customer ,$option);
+			}
+
+			//$this->cart->add($this->request->get['product_id'], $quantity, $date, $option);
 		}
 		// book the departure ticket
 		// 
@@ -579,6 +592,7 @@ class ControllerCheckoutCart extends Controller {
 		$product_return_info = $this->model_catalog_product->getProduct($product_return_id,$filter_date_return);
 
 		if ($product_return_info) {
+
 			if (isset($this->request->get['quantity'])) {
 				$quantity = $this->request->get['quantity'];
 			} else {
@@ -601,7 +615,18 @@ class ControllerCheckoutCart extends Controller {
 
 			$date = $filter_date_return;
 
-			$this->cart->add($this->request->get['product_return_id'], $quantity, $date,$option);
+			for( $i = $quantity + 1; $i <= 2*$quantity; $i++)
+			{
+				if (isset($this->request->get['customer'.$i])) {
+					$customer = $this->request->get['customer'.$i];
+				} else {
+					$customer = "";	
+				}
+
+				$this->cart->add($this->request->get['product_return_id'], 1, $date, $customer ,$option);
+			}
+
+			//$this->cart->add($this->request->get['product_return_id'], $quantity, $date,$option);
 		}
 		// book the arrive ticket
 		$this->redirect($this->url->link('checkout/checkout'));

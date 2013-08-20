@@ -255,15 +255,22 @@ print_r($categories);
 $('#gotocheckout').bind('click', function() {
 
   var flag = false;
+  var customer = "";
+  var i = 0
 
   $('.fillinsheet').each(function()
   {
+      i ++;
       if($(this).val() == '')
       {
          flag = true;
       }
+      customer = customer + "&customer" + i + "=" + $(this).val();
   });
 
+  //alert(customer);
+
+  
   if(flag)
   {
     alert("Please fullfill all the passenger names.");
@@ -272,8 +279,10 @@ $('#gotocheckout').bind('click', function() {
   else
   {
     url = '<?php echo $addtochat;?>';
+    url += customer;
     location = url;
   }
+  
 
 
 

@@ -35,8 +35,10 @@ $(document).ready(function() {
 
 </script>
 
-<?php 
+<?php
+//echo "<pre>"; 
 //print_r($products);
+//echo "</pre>"; 
 ?>
 
 <body>
@@ -56,8 +58,10 @@ $(document).ready(function() {
                     <li>Here is your bus e-Tickets from gotobustour.com To redeem, please bring a printout of this ticket along with a valid photo ID.</li>
                     <li><span class="blue">REMARKS :</span> Please show your e-ticket or confirmation number to obtain your Boarding Pass from your departure office.</li>
                     <li><strong>E-Ticket Details</strong></li>
+                    <!--
                     <li><span class="blue">Bus Route : </span><?php echo $products[0]['name'];?></li>
                     <li><span class="blue">Number of Passengers :</span> <?php echo $products[0]['quantity'];?></li>
+                    -->
                 </ul>
             </div></br>
             
@@ -66,8 +70,8 @@ $(document).ready(function() {
             <div class="box3">
             	<ul>
                 	<li class="title" style="margin-left:0;">Go To Bus Tour Ticket</li>
-                    <li class="tiketdet"><span>Customer : </span><?php echo $firstname;?>&nbsp;<?php echo $lastname;?></li>
-                    <li class="tiketdet"><span>Confirmation Number :</span> <?php echo $invoice_no;?></li>
+                    <li class="tiketdet"><span>Customer : </span><?php echo $product['customer'];?></li>
+                    <li class="tiketdet"><span>Confirmation Number :</span> <?php echo $product['confirm_no'];?></li>
                     <li class="tiketdet"><?php echo $product['name']?> (Schedule lD: <?php echo $product['model']?>)</li>
                     <li class="tiketdet"><span>Date :</span> <?php echo $product['departure_date'];?></li>
                     <li class="tiketdet"><span>Departure :</span> (<?php echo $product['departure_time'];?> <?php echo $product['departure_station'];?>)</li>

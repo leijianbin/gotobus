@@ -9,7 +9,11 @@
             	Bus Station
             </div>
            <div class="busstationcon">
-           <?php foreach($posts as $post) { ?>
+           <?php 
+           $count = 0;
+           foreach($posts as $post) { 
+           $count ++;
+            ?>
            		<div class="bussstationbox">
                 	<div class="busstationimg"><img src="image/<?php echo $post['image']?>" />
                 	</div>
@@ -18,7 +22,11 @@
                         <h5><?php echo $post['intro_text']?></h5>
                         <div class="busstationdetail"><?php echo $post['text']?></div>
                     </div>
-                </div>
+              </div>
+            <?php if( $count%2 == 0 )
+              { ?>
+              <div class="clear"></div>
+              <?php } ?>
             <?php } ?>
                 <div class="clear"></div>
            </div>

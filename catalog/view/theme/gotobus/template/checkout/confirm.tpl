@@ -48,6 +48,7 @@
 <?php } else { ?>
 <script type="text/javascript"><!--
 //alert(<?php echo $departure_date;?>);
-location = '<?php echo $redirect; ?>';
+alert(<?php echo $redirect; ?>);
+//location = '<?php echo $redirect; ?>';
 //--></script> 
 <?php } ?>
