@@ -1,5 +1,4 @@
 <?php 
-print_r($order_products); 
 //print_r($order_statuses);
 ?>
 <?php echo $header; ?>

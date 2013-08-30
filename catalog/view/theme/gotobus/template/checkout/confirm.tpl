@@ -16,9 +16,9 @@
       <?php foreach ($products as $product) { ?>
       <tr>
         <?php
-        echo "<pre>";
-        print_r($product);
-        echo "</pre>";
+        //echo "<pre>";
+        //print_r($product);
+        //echo "</pre>";
         ?>
         <td class="name"><?php echo $product['name']; ?>
           <?php foreach ($product['option'] as $option) { ?>

@@ -1,7 +1,6 @@
 <?php
 class ControllerSaleOrder extends Controller {
 	private $error = array();
-
   	public function index() {
 		$this->language->load('sale/order');
 
@@ -1097,7 +1096,7 @@ class ControllerSaleOrder extends Controller {
 			$order_products = array();
 		}
 
-		print_r($order_products);
+		//print_r($order_products);
 		
 		$this->load->model('catalog/product');
 		
