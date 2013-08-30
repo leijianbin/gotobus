@@ -1,5 +1,5 @@
 <?php 
-//print_r($order_products); 
+print_r($order_products); 
 //print_r($order_statuses);
 ?>
 <?php echo $header; ?>
@@ -274,6 +274,9 @@
                 <td></td>
                 <td class="left"><?php echo $column_product; ?></td>
                 <td class="left">Departure Date</td>
+                <td class="left">Customer</td>
+                <td class="left">Confirmation No.</td>
+                <td class="left">Status</td>
                 <td class="left"><?php echo $column_model; ?></td>
                 <td class="right"><?php echo $column_quantity; ?></td>
                 <td class="right"><?php echo $column_price; ?></td>
@@ -312,8 +315,20 @@
                   <?php } ?>
                 </td>
                 <td class="left"><?php echo $order_product['departure_date']; ?>
-                  <input type="hidden" name="order_product[<?php echo $product_row; ?>][departure_date]" value="<?php echo $order_product['departure_date']; ?>" />
+                  <input type="text" name="order_product[<?php echo $product_row; ?>][departure_date]" value="<?php echo $order_product['departure_date']; ?>" class ="date hasDatepicker"/>
                 </td>
+
+                <!-- add customer name / confirmation number / e-ticket status -->
+                <td class="left"><?php echo $order_product['customer']; ?>
+                  <input type="text" name="order_product[<?php echo $product_row; ?>][customer]" value="<?php echo $order_product['customer']; ?>" />
+                </td>
+                <td class="left"><?php echo $order_product['confirm_no']; ?>
+                  <input type="hidden" name="order_product[<?php echo $product_row; ?>][confirm_no]" value="<?php echo $order_product['confirm_no']; ?>" />
+                </td>
+                <td class="left"><?php echo $order_product['ticket_status_id']; ?>
+                  <input type="text" name="order_product[<?php echo $product_row; ?>][ticket_status_id]" value="<?php echo $order_product['ticket_status_id']; ?>" />
+                </td>
+                <!-- add customer name / confirmation number / e-ticket status -->
 
                 <td class="left"><?php echo $order_product['model']; ?>
                   <input type="hidden" name="order_product[<?php echo $product_row; ?>][model]" value="<?php echo $order_product['model']; ?>" /></td>
@@ -335,6 +350,7 @@
               <?php } ?>
             </tbody>
           </table>
+          <p>Note: Status id stand for: 1 - Normal; 3 - Used; 5 - Changed; 7 - Open</p>
           <table class="list">
             <thead>
               <tr>
@@ -356,7 +372,12 @@
                 <td class="left">Departure Date</td>
                 <td class="left"><input type="text" name="departure_date" value="" size="12" class="date"/>
                 </td>
-              </tr>              
+              </tr>
+              <tr>
+                <td class="left">Customer</td>
+                <td class="left"><input type="text" name="customer" value="" size="12" class="customer"/>
+                </td>
+              </tr>               
             </tbody>
             <tfoot>
               <tr>
@@ -1436,7 +1457,16 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 					}
 					
 					html += '  </td>';
-          html += '  <td class="left">' + product['departure_date'] + '<input type="hidden" name="order_product[' + product_row + '][departure_date]" value="' + product['departure_date'] + '" /></td>';
+
+          html += '  <td class="left">' + product['departure_date'] + '<input type="text" name="order_product[' + product_row + '][departure_date]" value="' + product['departure_date'] + '" /></td>';
+
+          html += '  <td class="left">' + product['customer'] + '<input type="text"  name="order_product[' + product_row + '][customer]" value="' + product['customer'] + '" /></td>';
+
+          html += '  <td class="left">' + product['confirm_no'] + '<input type="hidden" name="order_product[' + product_row + '][confirm_no]" value="' + product['confirm_no'] + '" /></td>';
+
+          html += '  <td class="left">' + product['ticket_status_id'] + '<input type="text"  name="order_product[' + product_row + '][ticket_status_id]" value="' + product['ticket_status_id'] + '" /></td>';
+
+
 					html += '  <td class="left">' + product['model'] + '<input type="hidden" name="order_product[' + product_row + '][model]" value="' + product['model'] + '" /></td>';
 					html += '  <td class="right">' + product['quantity'] + '<input type="hidden" name="order_product[' + product_row + '][quantity]" value="' + product['quantity'] + '" /></td>';
 					html += '  <td class="right">' + product['price'] + '<input type="hidden" name="order_product[' + product_row + '][price]" value="' + product['price'] + '" /></td>';

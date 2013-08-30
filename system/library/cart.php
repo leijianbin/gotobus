@@ -41,9 +41,10 @@ class Cart {
 					$customer = "";
 				} 
 
-				
 				$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
-				
+
+				//$confirm_no = $this->db->query("SELECT confirm_no FROM `order_product` WHERE `product_id` = " . $product_id . " and `customer` = '" . $customer . "' and `departure_date` = '" . $departure_date . "'");
+
 				if ($product_query->num_rows) {
 					$option_price = 0;
 					$option_points = 0;
@@ -230,7 +231,19 @@ class Cart {
 					if (!$product_query->row['quantity'] || ($product_query->row['quantity'] < $quantity)) {
 						$stock = false;
 					}
-					
+					$sql = "SELECT confirm_no, ticket_status_id FROM `order_product` WHERE `product_id` = " . $product_id . " and `customer` = '" . $customer . "' and `departure_date` = '" . $departure_date . "'";
+					$order_product_query = $this->db->query($sql);
+					if($order_product_query->num_rows)
+					{
+						$confirm_no = $order_product_query->row['confirm_no'];
+						$ticket_status_id = $order_product_query->row['ticket_status_id'];
+					}
+					else
+					{
+						$confirm_no = $this->createConfirmNo();
+						$ticket_status_id = 1;
+					}
+
 					$this->data[$key] = array(
 						'key'             => $key,
 						'product_id'      => $product_query->row['product_id'],
@@ -256,7 +269,9 @@ class Cart {
 						'height'          => $product_query->row['height'],
 						'length_class_id' => $product_query->row['length_class_id'],	
 						'departure_date'  => $departure_date,
-						'customer'		  => $customer
+						'customer'		  => $customer,
+						'confirm_no'	  => $confirm_no,
+						'ticket_status_id'=> $ticket_status_id
 					);
 				} else {
 					$this->remove($key);
@@ -267,7 +282,19 @@ class Cart {
 		return $this->data;
   	}
 		  
-  	public function add($product_id, $qty = 1, $date = "", $customer ="", $option = array()) {
+  	public function createConfirmNo() {
+		//check if this number exisit or not.
+		while(true)
+		{
+			$confirm_no = rand(10000,99999);
+			$invoice_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_product` WHERE confirm_no = '" . (int)$confirm_no . "'");
+			if( $invoice_query->num_rows == 0)
+				break;
+		}
+		return $confirm_no;
+	}
+
+  	public function add($product_id, $qty = 1, $date = "", $customer ="" ,$option = array()) {
     	/*
     	
     	 if (!$option) {

@@ -71,7 +71,7 @@ class ControllerCheckoutManual extends Controller {
 							}
 						}
 															
-						$this->cart->add($order_product['product_id'], $order_product['quantity'], $order_product['departure_date'],$option_data);
+						$this->cart->add($order_product['product_id'], $order_product['quantity'], $order_product['departure_date'],$order_product['customer'],$option_data);
 					}
 				}
 			}
@@ -90,6 +90,11 @@ class ControllerCheckoutManual extends Controller {
 					} else {
 						$departure_date = date("Y-m-d");
 					}
+					if (isset($this->request->post['customer'])) {
+						$customer = $this->request->post['customer'];
+					} else {
+						$customer = "unknow";
+					}
 																
 					if (isset($this->request->post['option'])) {
 						$option = array_filter($this->request->post['option']);
@@ -106,7 +111,7 @@ class ControllerCheckoutManual extends Controller {
 					}
 					
 					if (!isset($json['error']['product']['option'])) {
-						$this->cart->add($this->request->post['product_id'], $quantity, $departure_date ,$option);
+						$this->cart->add($this->request->post['product_id'], $quantity, $departure_date, $customer ,$option);
 					}
 				}
 			}
@@ -129,7 +134,7 @@ class ControllerCheckoutManual extends Controller {
 			// Products
 			$json['order_product'] = array();
 			
-			$products = $this->cart->getProducts();
+			$products = $this->cart->getProducts(); // why? 
 			
 			foreach ($products as $product) {
 				$product_total = 0;
@@ -179,7 +184,10 @@ class ControllerCheckoutManual extends Controller {
 					'total'      => $product['total'],	
 					'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
 					'reward'     => $product['reward'],
-					'departure_date' => $product['departure_date']		
+					'departure_date' => $product['departure_date'],
+					'customer' => $product['customer'],
+					'confirm_no' => $product['confirm_no'],
+					'ticket_status_id' => $product['ticket_status_id']
 				);
 			}
 			

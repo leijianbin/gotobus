@@ -56,7 +56,12 @@ print_r($categories);
 			
 			<div class="leavetimetb">
 				<div class="traveltime">
-					<p class="withbg">Please select departure time <?php echo $product['bus_date']?></p>
+					<p class="withbg">Please select departure time: <?php echo $product['bus_date']?>
+					<?php 
+							$dt = strtotime($product['bus_date']);
+							echo date('D',$dt);
+					?>	
+					</p>
 					<p class="fontbold"><?php echo $line_name;?></p> 
 				</div>
 			</div>
@@ -72,6 +77,13 @@ print_r($categories);
 					</tr>
 					<?php foreach ($products as $product) { ?>
 					<?php if( $product['bus_type'] == 'single') { ?>
+					<?php 
+					//add fileter the past due ticket
+					$time = $product['bus_date']." ".$product['departure_time'];
+					$dt = strtotime($time);
+					$now = time();
+					
+					if($dt > $now){ ?>
 					<tr class="trinfodetail">
 						<td class="col1">
 							<input class="leavetimet-data" val="<?echo $count?>" type="radio" name="leavetime" value=""><?php echo $product['departure_time']?>
@@ -82,7 +94,7 @@ print_r($categories);
 							<td class="col4">＄<?php echo $product['price']?></td>
 						</tr>
 						<?php $count++; ?>
-						<?php } } ?>
+						<?php } } }?>
 					</tbody>  
 			</table>
 		</div>
@@ -102,7 +114,12 @@ print_r($categories);
 
 				<div class="arrivetimetb">
 					<div class="traveltime">
-						<p class="withbg">Please select return time <?php echo $product['bus_date_return']?></p>
+						<p class="withbg">Please select return time: <?php echo $product['bus_date_return']?>
+						<?php 
+							$dt = strtotime($product['bus_date_return']);
+							echo date('D',$dt);
+						?>
+						</p>
 						<p class="fontbold"><?php echo $line_name;?></p> 
 					</div>
 				</div>
@@ -118,6 +135,14 @@ print_r($categories);
 						</tr>
 						<?php foreach ($products as $product) { ?>
 						<?php if( $product['bus_type'] != 'single') { ?>
+						
+						<?php 
+						//add the filter the past due ticket.
+						$time = $product['bus_date_return']." ".$product['departure_time'];
+						$dt = strtotime($time);
+						$now = time();
+						if($dt > $now){ ?>
+
 						<tr class="trinfodetail">
 							<td class="col1">
 								<input class="leavetimet-data-return" val="<?echo $count?>" type="radio" name="leavetime_return" value=""><?php echo $product['departure_time']?>
@@ -129,7 +154,7 @@ print_r($categories);
 							<td class="col4">＄<?php echo $product['price']?></td>
 						</tr>
 						<?php $count++; ?>
-						<?php } } ?>
+						<?php } } } ?>
 					</tbody>  
 				</table>
 			</div>

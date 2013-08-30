@@ -119,7 +119,7 @@ class ControllerSaleOrder extends Controller {
 			}
 			
 			//$this->redirect($this->url->link('sale/order', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-			$this->redirect($this->url->link('report/product_purchased', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			//$this->redirect($this->url->link('report/product_purchased', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 		
     	$this->getForm();
@@ -1096,6 +1096,8 @@ class ControllerSaleOrder extends Controller {
 		} else {
 			$order_products = array();
 		}
+
+		print_r($order_products);
 		
 		$this->load->model('catalog/product');
 		
@@ -1132,7 +1134,10 @@ class ControllerSaleOrder extends Controller {
 				'total'            => $order_product['total'],
 				'tax'              => $order_product['tax'],
 				'reward'           => $order_product['reward'],
-				'departure_date'   => $order_product['departure_date']	
+				'departure_date'   => $order_product['departure_date'],
+				'customer'   	   => $order_product['customer'],
+				'ticket_status_id' => $order_product['ticket_status_id'],
+				'confirm_no'   	   => $order_product['confirm_no']
 			);
 		}
 		

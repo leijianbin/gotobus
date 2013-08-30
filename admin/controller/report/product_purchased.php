@@ -31,7 +31,13 @@ class ControllerReportProductPurchased extends Controller {
 			$filter_order_schedule = $this->request->get['filter_order_schedule'];
 		} else {
 			$filter_order_schedule = 0;
-		}		
+		}
+
+		if (isset($this->request->get['filter_confirm_no'])) {
+			$filter_confirm_no = $this->request->get['filter_confirm_no'];
+		} else {
+			$filter_confirm_no = "";
+		}
 						
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -85,6 +91,7 @@ class ControllerReportProductPurchased extends Controller {
 			'filter_date_end'	     => $filter_date_end, 
 			'filter_order_status_id' => $filter_order_status_id,
 			'filter_order_schedule'  => $filter_order_schedule,
+			'filter_confirm_no'		 => $filter_confirm_no,
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
 		);
@@ -126,13 +133,15 @@ class ControllerReportProductPurchased extends Controller {
 				'model'      => $result['model'],
 				'quantity'   => $result['quantity'],
 				'departure_date' => $result['departure_date'],
-				'invoice_no' => $result['invoice_no'],
+				//'invoice_no' => $result['invoice_no'],
+				'confirm_no' => $result['confirm_no'],
+				'customer' => $result['customer'],
 				'product_id' => $result['product_id'],
-				'customer' => $result['firstname']." ".$result['lastname'],
+				//'customer' => $result['firstname']." ".$result['lastname'],
 				'total'      => $this->currency->format($result['total'], $this->config->get('config_currency')),
 				'action'        => $action,
 				'date_added'	=> date('Y-m-d', strtotime($result['date_added'])),
-				'os_name'		=>  $result['os_name'],
+				'ops_name'		=>  $result['ops_name'],
 			);
 		}
 				
@@ -156,14 +165,18 @@ class ControllerReportProductPurchased extends Controller {
 		
 		$this->load->model('localisation/order_status');
 		
-		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
+		//$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
+		$this->data['order_statuses'] = $this->model_localisation_order_status->getTicketStatuses();
 
-		
 		
 		$url = '';
 						
 		if (isset($this->request->get['filter_date_start'])) {
 			$url .= '&filter_date_start=' . $this->request->get['filter_date_start'];
+		}
+
+		if (isset($this->request->get['filter_confirm_no'])) {
+			$url .= '&filter_confirm_no=' . $this->request->get['filter_confirm_no'];
 		}
 		
 		if (isset($this->request->get['filter_date_end'])) {
@@ -184,7 +197,8 @@ class ControllerReportProductPurchased extends Controller {
 		$this->data['pagination'] = $pagination->render();		
 		
 		$this->data['filter_date_start'] = $filter_date_start;
-		$this->data['filter_date_end'] = $filter_date_end;		
+		$this->data['filter_date_end'] = $filter_date_end;
+		$this->data['filter_confirm_no'] = $filter_confirm_no;			
 		$this->data['filter_order_status_id'] = $filter_order_status_id;
 		$this->data['filter_order_schedule'] = $filter_order_schedule;
 		

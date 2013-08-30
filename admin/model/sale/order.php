@@ -209,7 +209,7 @@ class ModelSaleOrder extends Model {
 		
       	if (isset($data['order_product'])) {		
       		foreach ($data['order_product'] as $order_product) {	
-      			$this->db->query("INSERT INTO " . DB_PREFIX . "order_product SET order_product_id = '" . (int)$order_product['order_product_id'] . "', order_id = '" . (int)$order_id . "', product_id = '" . (int)$order_product['product_id'] . "', departure_date = '" . $this->db->escape($order_product['departure_date']) . "', name = '" . $this->db->escape($order_product['name']) . "', model = '" . $this->db->escape($order_product['model']) . "', quantity = '" . (int)$order_product['quantity'] . "', price = '" . (float)$order_product['price'] . "', total = '" . (float)$order_product['total'] . "', tax = '" . (float)$order_product['tax'] . "', reward = '" . (int)$order_product['reward'] . "'");
+      			$this->db->query("INSERT INTO " . DB_PREFIX . "order_product SET order_product_id = '" . (int)$order_product['order_product_id'] . "', order_id = '" . (int)$order_id . "', product_id = '" . (int)$order_product['product_id'] . "', confirm_no = '" . $this->db->escape($order_product['confirm_no']) . "', customer = '" . $this->db->escape($order_product['customer']) . "', departure_date = '" . $this->db->escape($order_product['departure_date']) . "', name = '" . $this->db->escape($order_product['name']) . "', model = '" . $this->db->escape($order_product['model']) . "', quantity = '" . (int)$order_product['quantity'] . "', price = '" . (float)$order_product['price'] . "', total = '" . (float)$order_product['total'] . "', tax = '" . (float)$order_product['tax'] . "', ticket_status_id = '" . (float)$order_product['ticket_status_id'] . "', reward = '" . (int)$order_product['reward'] . "'");
 			
 				$order_product_id = $this->db->getLastId();
 
@@ -529,8 +529,9 @@ class ModelSaleOrder extends Model {
 	}
 	
 	public function getOrderProducts($order_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
-		
+		//$query = $this->db->query("SELECT op.*, ops.name as status, ops.order_status_id as status_id FROM " . DB_PREFIX . "order_product op" . " INNER JOIN order_product_status ops ON op.ticket_status_id = ops.order_status_id" . " WHERE order_id = '" . (int)$order_id . "'");
+		$query = $this->db->query("SELECT op.* FROM " . DB_PREFIX . "order_product op WHERE order_id = '" . (int)$order_id . "'");
+		//print_r($query);
 		return $query->rows;
 	}
 	

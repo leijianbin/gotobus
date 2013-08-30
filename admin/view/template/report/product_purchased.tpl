@@ -7,9 +7,10 @@
 //echo "</pre>";
 //echo "<br/>";
 //echo "<br/>";
-//echo "<pre>";
+echo "<pre>";
 //print_r($products);
-//echo "</pre>";
+echo "</pre>";
+
 $exit_schedules = array();
 
 if($products)
@@ -40,9 +41,9 @@ if($products)
       <table class="form">
         <tr>
           <td><?php echo $entry_date_start; ?>
-            <input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" id="date-start" size="12" /></td>
+            <input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" id="date-start" size="10" /></td>
           <td><?php echo $entry_date_end; ?>
-            <input type="text" name="filter_date_end" value="<?php echo $filter_date_end; ?>" id="date-end" size="12" /></td>
+            <input type="text" name="filter_date_end" value="<?php echo $filter_date_end; ?>" id="date-end" size="10" /></td>
 
           <td>Schedule
             <select name="filter_order_schedule">
@@ -56,6 +57,10 @@ if($products)
 
               <?php } ?>
             </select>
+          </td>
+          
+          <td>Confrim No.
+            <input type="text" name="filter_confirm_no" value="<?php echo $filter_confirm_no; ?>" id="confrim_no" size="10">
           </td>
 
           <td><?php echo $entry_status; ?>
@@ -106,8 +111,8 @@ if($products)
             <td class="left"><?php echo $product['name']; ?></td>
             <td class="left"><?php echo $product['customer']; ?></td>
             <td class="right"><?php echo $product['departure_date']; ?></td>
-            <td class="left"><?php echo $product['invoice_no']; ?></td>
-            <td class="left"><?php echo $product['os_name']; ?></td>
+            <td class="left"><?php echo $product['confirm_no']; ?></td>
+            <td class="left"><?php echo $product['ops_name']; ?></td>
             <td class="right"><?php echo $product['quantity']; ?></td>
             <td class="right"><?php echo $product['total']; ?></td>
             <td class="right"><?php echo $product['date_added']; ?></td>
@@ -152,6 +157,12 @@ function filter() {
 	if (filter_date_end) {
 		url += '&filter_date_end=' + encodeURIComponent(filter_date_end);
 	}
+
+  var filter_confirm_no = $('input[name=\'filter_confirm_no\']').attr('value');
+  
+  if (filter_confirm_no) {
+    url += '&filter_confirm_no=' + encodeURIComponent(filter_confirm_no);
+  }
 	
 	var filter_order_status_id = $('select[name=\'filter_order_status_id\']').attr('value');
 	
