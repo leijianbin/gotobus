@@ -6,6 +6,8 @@ class ControllerCheckoutSuccess extends Controller {
 		$this->data['order_id'] = $this->request->get['order_id'];
 		$this->data['confirm_no'] = $this->request->get['confirm_no'];
 
+		$this->data['round-trip'] = $this->request->get['confirm_no'];
+
 		if (isset($this->session->data['order_id'])) {
 			$this->cart->clear();
 

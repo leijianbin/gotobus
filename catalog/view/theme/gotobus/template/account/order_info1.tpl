@@ -31,8 +31,6 @@ $(document).ready(function() {
             print();
         });
 });
-
-
 </script>
 
 <?php
@@ -54,14 +52,14 @@ $(document).ready(function() {
             <div class="box2">
                 <ul>
                     <li>Dear<strong>&nbsp;<?php echo $firstname;?>&nbsp;<?php echo $lastname;?>&nbsp;</strong>( Tel : <?php echo $telephone;?> )</li>
-                    <li><span class="blue">Total charged amount :</span><span class="red"> $<?php echo (int)$total;?></span></li>
+                    <li><span class="blue">Total charged amount :</span><span class="red"> $<?php echo $products[0]['total'];?></span></li>
                     <li>Here is your bus e-Tickets from gotobustour.com To redeem, please bring a printout of this ticket along with a valid photo ID.</li>
                     <li><span class="blue">REMARKS :</span> Please show your e-ticket or confirmation number to obtain your Boarding Pass from your departure office.</li>
                     <li><strong>E-Ticket Details</strong></li>
-                    <!--
+                    
                     <li><span class="blue">Bus Route : </span><?php echo $products[0]['name'];?></li>
                     <li><span class="blue">Number of Passengers :</span> <?php echo $products[0]['quantity'];?></li>
-                    -->
+                    
                 </ul>
             </div></br>
             

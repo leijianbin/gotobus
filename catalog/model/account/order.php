@@ -103,7 +103,7 @@ class ModelAccountOrder extends Model {
 		}
 	}
 
-	public function getOrderByConfrimNo($order_id,$confirm_no) {
+	public function getOrderByConfrimNo($order_id,$confirm_no,$product_id) {
 		//$order_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE order_id = '" . (int)$order_id . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND order_status_id > '0'");
 		
 		$order_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE order_id = '" . (int)$order_id. "' And invoice_no = '" . (int)$confirm_no . "' AND order_status_id > '0'");
@@ -239,8 +239,20 @@ class ModelAccountOrder extends Model {
 		$query = $this->db->query("SELECT * FROM product p, product_description pd WHERE p.product_id = pd.product_id AND p.product_id in ("."SELECT product_id FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "')");
 		return $query->rows;
 	}
-	
 
+	public function getOrderProductDetail($order_id,$product_id) {
+
+		//$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+		$query = $this->db->query("SELECT * FROM product p, product_description pd WHERE p.product_id = pd.product_id AND p.product_id in ("."SELECT product_id FROM " . DB_PREFIX . "order_product WHERE product_id= '". (int)$product_id. "' AND order_id = '" . (int)$order_id . "')");
+		return $query->rows;
+	}
+	
+	public function getOrderProductsType($order_id) {
+
+		//$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+		$query = $this->db->query("SELECT DISTINCT product_id FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "' ORDER By 'departure_date'");
+		return $query->rows;
+	}
 
 
 	public function getOrderOptions($order_id, $order_product_id) {

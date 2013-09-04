@@ -459,6 +459,14 @@ class ModelCheckoutOrder extends Model {
 			}
 	
 			$template->data['totals'] = $order_total_query->rows;
+
+			if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+				$server = $this->config->get('config_ssl');
+			} else {
+				$server = $this->config->get('config_url');
+			}
+
+			$template->data['base'] = $server;
 			
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/mail/order.tpl')) {
 				$html = $template->fetch($this->config->get('config_template') . '/template/mail/order.tpl');

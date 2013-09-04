@@ -111,7 +111,7 @@
       <?php } ?>
     </tfoot>
   </table>
-  <p><a href="http://localhost/opencart/gotobus/index.php?route=account/order/info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
+  <p><a href="<?php echo $base;?>index.php?route=account/order/ticket_info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
 
   <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_footer; ?></p>
   <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_powered; ?></p>

@@ -142,8 +142,57 @@ class ControllerAccountOrder extends Controller {
 			'common/header'	
 		);
 						
-		$this->response->setOutput($this->render());				
+		$this->render();				
 	}
+	
+	public function ticket_info() {
+		
+		$this->language->load('account/order');
+		
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
+		if (isset($this->request->get['confirm_no'])) {
+			$confirm_no = $this->request->get['confirm_no'];
+		} else {
+			$confirm_no = 0;
+		}	
+		$this->load->model('account/order');
+		$productId = $this->model_account_order->getOrderProductsType($this->request->get['order_id']);
+		/*
+		if($productTypeNum == 2)
+		{	
+			$roundTrip = True;
+		}
+		else
+		{
+			$roundTrip = False;
+		}
+		*/
+
+		$this->data['order_id'] = $order_id;
+		$this->data['confirm_no'] = $confirm_no;
+		$this->data['productId'] = $productId;
+	
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/account/order_info1.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/account/ticket_info.tpl';
+		} else {
+			$this->template = 'default/template/account/ticket_info.tpl';
+		}
+		
+		$this->children = array(
+			//'common/column_left',
+			//'common/column_right',
+			'common/content_top',
+			'common/content_bottom',
+			'common/footer',
+			'common/header'	
+		);
+							
+		$this->response->setOutput($this->render());		
+    }
 	
 	public function info() { 
 		$this->language->load('account/order');
@@ -153,6 +202,13 @@ class ControllerAccountOrder extends Controller {
 		} else {
 			$order_id = 0;
 		}
+
+		if (isset($this->request->get['product_id'])) {
+			$product_id = $this->request->get['product_id'];
+		} else {
+			$product_id = 0;
+		}
+
 		if (isset($this->request->get['confirm_no'])) {
 			$confirm_no = $this->request->get['confirm_no'];
 		} else {
@@ -168,7 +224,7 @@ class ControllerAccountOrder extends Controller {
 						
 		$this->load->model('account/order');
 			
-		$order_info = $this->model_account_order->getOrderByConfrimNo($order_id,$confirm_no);
+		$order_info = $this->model_account_order->getOrderByConfrimNo($order_id,$confirm_no,$product_id);
 		
 		if ($order_info) {
 
@@ -348,7 +404,20 @@ class ControllerAccountOrder extends Controller {
 			
 			$this->data['products'] = array();
 			
-			$products = $this->model_account_order->getOrderProductsDetail($this->request->get['order_id']);
+			$products = $this->model_account_order->getOrderProductDetail($this->request->get['order_id'],$this->request->get['product_id']);
+			//$productTypeNum = $this->model_account_order->getOrderProductsType($this->request->get['order_id']);
+
+			/*if($productTypeNum == 2)
+			{	
+				$roundTrip = True;
+			}
+			else
+			{
+				$roundTrip = False;
+			}
+			
+			echo (int)$roundTrip;
+			*/
 
       		foreach ($products as $product) {
 				/*$option_data = array();
@@ -369,20 +438,22 @@ class ControllerAccountOrder extends Controller {
 					);					
         		}*/
 
-        		$orderOptions = $this->model_account_order->getOrderProduct($this->request->get['order_id'], $product['product_id']);
+        		$orderOptions = $this->model_account_order->getOrderProduct($this->request->get['order_id'], $this->request->get['product_id']);
+
+        		$quantity = count($orderOptions);
 
         		foreach ($orderOptions as $orderOption) {
 
         		$this->data['products'][] = array(
-        			'product_id' => $product['product_id'],
+        			'product_id' => $this->request->get['product_id'],
         			'order_id' => $this->request->get['order_id'],
           			'name'     => $product['name'],
           			'model'    => $product['model'],
           			//'option'   => $option_data,
           			//'quantity' => $product['quantity'],
-          			'quantity' => $orderOption['quantity'],
-          			'price'    => $product['price'], 
-					'total'    => $orderOption['total'],
+          			'quantity' => $quantity,
+          			'price'    => $orderOption['price'], 
+					'total'    => $quantity * $orderOption['price'],
 					'departure_date'    => $orderOption['departure_date'],
 					'departure_time'    => $product['departure_time'],
 					'arrive_time'    => $product['arrive_time'],
@@ -472,7 +543,7 @@ class ControllerAccountOrder extends Controller {
 			
 			$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_order'),
-				'href'      => $this->url->link('account/order/info', 'order_id=' . $order_id, 'SSL'),
+				'href'      => $this->url->link('account/order/info1', 'order_id=' . $order_id, 'SSL'),
 				'separator' => $this->language->get('text_separator')
 			);
 												

@@ -6,7 +6,7 @@ class ControllerPaymentCod extends Controller {
     	$this->load->model('checkout/order');
 		
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
-		
+
 		//use the get method to pass the data, it's not safe
 		$this->data['continue'] = $this->url->link('checkout/success') .'&order_id='. $this->session->data['order_id']. '&confirm_no='. $order_info['invoice_no'];
 		

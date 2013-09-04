@@ -1,3 +1,4 @@
+
 <?php
 class ControllerPaymentAuthorizeNetAim extends Controller {
 	protected function index() {
