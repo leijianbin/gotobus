@@ -215,6 +215,14 @@ class ControllerAccountOrder extends Controller {
 			$confirm_no = 0;
 		}	
 
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+				$server = $this->config->get('config_ssl');
+			} else {
+				$server = $this->config->get('config_url');
+			}
+
+		$this->data['base'] = $server;
+
 		/*if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/order/info', 'order_id=' . $order_id, 'SSL');
 			

@@ -14,7 +14,7 @@ else
 
 <?php echo $header; ?>
 <body>
-	<div class="wrapper">    	
+	<div class="wrapper" id="ticket-info">    	
         <div class="clear"></div>
         <h1>Your ticket List:</h1>
         <div class="contentsubpage">

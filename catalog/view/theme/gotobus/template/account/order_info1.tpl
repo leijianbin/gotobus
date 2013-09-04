@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Order Information</title>
-<base href="http://localhost/opencart/gotobus/" />
-<link href="http://localhost/opencart/gotobus/image/data/cart.png" rel="icon" />
+<base href="<?php echo $base;?>"/>
+<link href="<?php echo $base;?>image/data/cart.png" rel="icon" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/gotobus/stylesheet/stylesheet.css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/gotobus/stylesheet/general.css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/gotobus/stylesheet/style.css" />
