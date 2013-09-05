@@ -1,5 +1,7 @@
 <?php 
 //print_r($order_statuses);
+//echo $order_id;
+//print_r($order_products);
 ?>
 <?php echo $header; ?>
 <div id="content">
@@ -48,7 +50,8 @@
               <td><?php echo $entry_customer; ?></td>
               <td><input type="text" name="customer" value="<?php echo $customer; ?>" />
                 <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>" />
-                <input type="hidden" name="customer_group_id" value="<?php echo $customer_group_id; ?>" /></td>
+                <input type="hidden" name="customer_group_id" value="<?php echo $customer_group_id; ?>" />
+                <input type="hidden" name="order_id" value="<?php echo $order_id;?>"></td>
             </tr>
             <tr>
               <td class="left"><?php echo $entry_customer_group; ?></td>
@@ -385,6 +388,7 @@
               </tr>
             </tfoot>
           </table>
+          <a id="button-resend" class="button">Resend Email</a>
         </div>
         
         <div id="tab-voucher" class="vtabs-content">
@@ -1189,6 +1193,24 @@ $('select[name=\'shipping\']').bind('change', function() {
 });
 //--></script> 
 <script type="text/javascript"><!--
+$('#button-resend').on('click', function(event) {
+  event.preventDefault();
+  //alert("<?php echo $store_url; ?>admin/index.php?route=sale/order/resend&token=<?php echo $token; ?>");
+  
+  $.ajax({
+    url: '<?php echo $store_url; ?>admin/index.php?route=sale/order/resend&token=<?php echo $token; ?>',
+    type: 'post',
+    data: {'order_id':$('input[name=\'order_id\']').val()},
+    success: function(data){
+      alert("Resend Seccuess to " + data);
+    },
+    error: function() {
+      alert("Resend Fail");
+    }
+  });
+});
+
+
 $('#button-product, #button-voucher, #button-update').live('click', function() {	
 	data  = '#tab-customer input[type=\'text\'], #tab-customer input[type=\'hidden\'], #tab-customer input[type=\'radio\']:checked, #tab-customer input[type=\'checkbox\']:checked, #tab-customer select, #tab-customer textarea, ';
 	data += '#tab-payment input[type=\'text\'], #tab-payment input[type=\'hidden\'], #tab-payment input[type=\'radio\']:checked, #tab-payment input[type=\'checkbox\']:checked, #tab-payment select, #tab-payment textarea, ';

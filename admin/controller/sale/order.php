@@ -1159,7 +1159,7 @@ class ControllerSaleOrder extends Controller {
 		} else {
       		$this->data['order_totals'] = array();
     	}	
-		
+		$this->data['order_id'] = $this->request->get['order_id'];
 		$this->template = 'sale/order_form.tpl';
 		$this->children = array(
 			'common/header',
@@ -2561,6 +2561,41 @@ class ControllerSaleOrder extends Controller {
 		$this->template = 'sale/order_invoice.tpl';
 
 		$this->response->setOutput($this->render());
+	}
+
+	public function resend() {
+		$order_id = $this->request->post['order_id'];
+		//echo $order_id;
+		$this->load->model('sale/order');
+
+		$order_info = $this->model_sale_order->getOrder($order_id);
+
+
+		// email function 
+		// 
+			$mail = new Mail(); 
+			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail->parameter = $this->config->get('config_mail_parameter');
+			$mail->hostname = $this->config->get('config_smtp_host');
+			$mail->username = $this->config->get('config_smtp_username');
+			$mail->password = $this->config->get('config_smtp_password');
+			$mail->port = $this->config->get('config_smtp_port');
+			$mail->timeout = $this->config->get('config_smtp_timeout');			
+			$mail->setTo($order_info['email']);
+			$mail->setFrom($this->config->get('config_email'));
+			$mail->setSender($order_info['store_name']);
+			$mail->setSubject("Your Order have been updated");
+			//$mail->setHtml($html);
+			$text =  "Thank you for your interest in Go to Bus Tour products. Your order has been updated and please print the new e-ticket with the link below.\n \n";
+			$text .= "http://yibadatech.com/gotobus/index.php?route=account/order/ticket_info&order_id=";
+			$text .= $order_id;
+			$text .= "&confirm_no=";
+			$text .= $order_info['invoice_no'];
+			$mail->setText($text);
+			$mail->send();
+		// 
+		// 
+		$this->response->setOutput($order_info['email']);
 	}
 }
 ?>
