@@ -161,7 +161,9 @@ print_r($categories);
                                {
                                   $arrivetime = intval($arrivehour[0]) + 24;
                                   $starttime = intval($start[0]) + 12;
-                                  $product_return['arrive_date'] = $product_return['departure_date'];
+                                  $arrive_date  = strtotime($product_return['departure_date']) + 3600*24;
+                                  $product_return['arrive_date'] = date('Y-m-d',$arrive_date);
+                                  //$product_return['arrive_date'] = $product_return['departure_date'];
                                }
                                else if($start[1]=="AM"&&$arrive[1]=="PM")
                                {

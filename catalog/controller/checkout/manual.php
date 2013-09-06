@@ -591,7 +591,6 @@ class ControllerCheckoutManual extends Controller {
 		} else {
       		$json['error']['warning'] = $this->language->get('error_permission');
 		}
-	
 		$this->response->setOutput(json_encode($json));	
 	}
 }

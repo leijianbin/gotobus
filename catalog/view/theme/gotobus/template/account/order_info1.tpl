@@ -70,10 +70,11 @@ $(document).ready(function() {
                 	<li class="title" style="margin-left:0;">Go To Bus Tour Ticket</li>
                     <li class="tiketdet"><span>Customer : </span><?php echo $product['customer'];?></li>
                     <li class="tiketdet"><span>Confirmation Number :</span> <?php echo $product['confirm_no'];?></li>
-                    <li class="tiketdet"><?php echo $product['name']?> (Schedule lD: <?php echo $product['model']?>)</li>
+                    <li class="tiketdet"><span>Bus Route : </span><?php echo $product['name']?> (Schedule lD: <?php echo $product['model']?>)</li>
                     <li class="tiketdet"><span>Date :</span> <?php echo $product['departure_date'];?></li>
                     <li class="tiketdet"><span>Departure :</span> (<?php echo $product['departure_time'];?> <?php echo $product['departure_station'];?>)</li>
                     <li class="tiketdet"><span>Arrival :</span> (<?php echo $product['arrive_time'];?> <?php echo $product['arrive_station'];?>)</li>
+                    <li class="tiketdet"><span>Status : </span><?php echo $product['status'];?></li>
                 </ul>
             </div></br></br>
             <?php }?>

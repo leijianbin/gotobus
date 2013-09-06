@@ -15,7 +15,7 @@
   <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_download; ?></p>
   <p style="margin-top: 0px; margin-bottom: 20px;"><a href="<?php echo $download; ?>"><?php echo $download; ?></a></p>
   <?php } ?>
-  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
+  <!--<table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
       <tr>
         <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;" colspan="2"><?php echo $text_order_detail; ?></td>
@@ -36,6 +36,7 @@
       </tr>
     </tbody>
   </table>
+  -->
   <?php if ($comment) { ?>
   <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
@@ -50,7 +51,7 @@
     </tbody>
   </table>
   <?php } ?>
-  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
+  <!--<table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
       <tr>
         <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;"><?php echo $text_payment_address; ?></td>
@@ -68,6 +69,7 @@
       </tr>
     </tbody>
   </table>
+  -->
   <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
       <tr>
@@ -111,10 +113,10 @@
       <?php } ?>
     </tfoot>
   </table>
-  <p><a href="<?php echo $base;?>index.php?route=account/order/ticket_info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
+  <p style="font-weight: bold;">Please Print your E-ticket from following Link:</p>
+  <p style="font-size: 14px;"><a href="<?php echo $base;?>index.php?route=account/order/ticket_info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
 
-  <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_footer; ?></p>
-  <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_powered; ?></p>
+  <p style="margin-top: 0px; margin-bottom: 20px;">Contact us at 1866-848-5888</p>
 </div>
 </body>
 </html>

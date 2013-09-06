@@ -277,7 +277,7 @@ a img{border:0;}
 .print .box2 ul li { margin-bottom:15px;}
 .print .box2 span.red { color:#FC2020; font-size:16px;}
 .print .box2 span.blue {color:#0E8BB0; font-weight:500;}
-.print .box3 { font-size:16px; width:700px; height:240px; background:#ffffff; border:5px solid #cccccc;}
+.print .box3 { font-size:16px; width:700px; height:250px; background:#ffffff; border:5px solid #cccccc;}
 .print .box3 ul li.tiketdet { margin-left:30px; margin-top:5px;}
 .print .box3 ul li.title  {  width:700px; height:40px; background:url("../images/searchtopbg.png") repeat scroll 0 0 transparent; text-align:center ; line-height:40px; font-size:20px; color:#0E8BB0; font-weight:700;box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1); margin-bottom:15px; }
 .print .box3 ul li.tiketdet span { color:#0E8BB0; }

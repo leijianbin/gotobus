@@ -469,6 +469,7 @@ class ControllerAccountOrder extends Controller {
 					'departure_station' => $product['departure_station'],
 					'customer'			=> $orderOption['customer'],
 					'confirm_no'			=> $orderOption['confirm_no'],
+					'status'		=> $orderOption['status'],
 					//'return'   => $this->url->link('account/return/insert', 'order_id=' . $order_info['order_id'] . '&product_id=' . $product['product_id'], 'SSL')
         		);
         		}
