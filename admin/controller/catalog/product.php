@@ -872,7 +872,7 @@ class ControllerCatalogProduct extends Controller {
     	} elseif (!empty($product_info)) {
       		$this->data['shipping'] = $product_info['shipping'];
     	} else {
-			$this->data['shipping'] = 1;
+			$this->data['shipping'] = 0;
 		}
 		
     	if (isset($this->request->post['price'])) {
