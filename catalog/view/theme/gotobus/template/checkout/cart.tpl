@@ -25,7 +25,7 @@
       <table>
         <thead>
           <tr>
-            <td class="image"><?php echo $column_image; ?></td>
+            <!--<td class="image"><?php echo $column_image; ?></td> -->
             <td class="name"><?php echo $column_name; ?></td>
             <td class="model"><?php echo $column_model; ?></td>
             <td class="quantity"><?php echo $column_quantity; ?></td>
@@ -36,12 +36,13 @@
         <tbody>
           <?php foreach ($products as $product) { ?>
           <tr>
-            <td class="image"><?php if ($product['thumb']) { ?>
+            <!--<td class="image"><?php if ($product['thumb']) { ?>
               <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
               <?php } ?></td>
-            <td class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+            -->
+            <td class="name"><?php echo $product['name']; ?>
               <?php if (!$product['stock']) { ?>
-              <span class="stock">***</span>
+              <span class="stock">sold out</span>
               <?php } ?>
               <div>
                 <?php foreach ($product['option'] as $option) { ?>
@@ -348,4 +349,5 @@ $('select[name=\'country_id\']').bind('change', function() {
 $('select[name=\'country_id\']').trigger('change');
 //--></script>
 <?php } ?>
+<div class="clear"></div>
 <?php echo $footer; ?>

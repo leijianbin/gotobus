@@ -39,7 +39,7 @@ $_['entry_zone']             = 'Region / State:';
 $_['entry_postcode']         = 'Post Code:';
 
 // Error
-$_['error_stock']            = 'Products marked with *** are not available in the desired quantity or not in stock!';
+$_['error_stock']            = 'Products are not available!';
 $_['error_minimum']          = 'Minimum order amount for %s is %s!';	
 $_['error_required']         = '%s required!';	
 $_['error_product']          = 'Warning: There are no products in your cart!';	
