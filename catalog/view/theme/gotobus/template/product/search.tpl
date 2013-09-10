@@ -75,7 +75,9 @@
 							<td class="col4">Price/Person</td>
 						</tr>
 						<?php foreach ($products as $product) { ?>
-						<?php if( $product['bus_type'] == 'single') { ?>
+						<?php if( $product['bus_type'] == 'single') { 
+							if((int)$product['price'] > 0) {	
+							?>
 						<?php 
 						//add fileter the past due ticket
 						$time = $product['bus_date']." ".$product['departure_time'];
@@ -93,7 +95,7 @@
 								<td class="col4">＄<?php echo $product['price']?></td>
 							</tr>
 							<?php $count++; ?>
-							<?php } } }?>
+							<?php } } } }?>
 						</tbody>  
 				</table>
 			</div>
@@ -133,7 +135,8 @@
 								<td class="col4">Price/Person</td>
 							</tr>
 							<?php foreach ($products as $product) { ?>
-							<?php if( $product['bus_type'] != 'single') { ?>
+							<?php if( $product['bus_type'] != 'single') { 
+								if((int)$product['price'] > 0) {?>
 							
 							<?php 
 							//add the filter the past due ticket.
@@ -153,7 +156,7 @@
 								<td class="col4">＄<?php echo $product['price']?></td>
 							</tr>
 							<?php $count++; ?>
-							<?php } } } ?>
+							<?php } } } } ?>
 						</tbody>  
 					</table>
 				</div>

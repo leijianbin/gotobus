@@ -128,7 +128,7 @@ $ean="";
             <tr>
               <td>Price2 and Special date</td>
               <td><input type="text" name="price_two" value="<?php echo $price_two; ?>" />
-			  <input type+"text" name="special_date" value="<?php echo $special_date?>"/>(For example: 6|7, Stand for Sat,Sunday)</td>
+			  <input type+"text" name="special_date" value="<?php echo $special_date?>"/>(For example: 6|7, Stand for Sat,Sunday) | And if you set the sepcial price as -1, this special day will be disabled.</td>
             </tr>
 
             <tr>
