@@ -328,11 +328,11 @@ a.button, .list a.button {
 	background-color: #FFFFCB;
 }
 .list .left {
-	text-align: left;
+	text-align: center;
 	padding: 7px;
 }
 .list .right {
-	text-align: right;
+	text-align: center;
 	padding: 7px;
 }
 .list .center {

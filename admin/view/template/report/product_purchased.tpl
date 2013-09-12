@@ -80,7 +80,8 @@ if($products)
       </table>
       
       <?php foreach ($exit_schedules as $current_schedule) { 
-            $subtotal = 0; 
+            $subtotal = 0;
+            $number = 0; 
             //print_r($current_schedule);
             if(true) {
       ?>
@@ -105,13 +106,15 @@ if($products)
             
           ?>
 
-          <?php if($product['name'] == $current_schedule['name']) { ?>
+          <?php if($product['name'] == $current_schedule['name']) { 
+              $number = $number + 1;
+            ?>
           <tr>
             <!-- <td class="left"><?php echo $product['product_id']; ?></td> -->
             <td class="left"><?php echo $product['name']; ?></td>
-            <td class="left"><?php echo $product['customer']; ?></td>
+            <td class="left" style="font-weight: bold;"><?php echo $product['customer']; ?></td>
             <td class="right"><?php echo $product['departure_date']; ?></td>
-            <td class="left"><?php echo $product['confirm_no']; ?></td>
+            <td class="left" style="font-weight: bold;"><?php echo $product['confirm_no']; ?></td>
             <td class="left"><?php echo $product['ops_name']; ?></td>
             <td class="right"><?php echo $product['quantity']; ?></td>
             <td class="right"><?php echo $product['total']; ?></td>
@@ -126,7 +129,7 @@ if($products)
           <?php }?>
           
           <?php }?>
-          <tr> <td>Sub Total: $<?php echo $subtotal; ?> </td></tr>  
+          <tr> <td>Sub Total: $<?php echo $subtotal; ?> </br> Quantity: <?php echo $number;?></td></tr>  
           <?php } else { ?>
           <tr>
             <td class="center" colspan="9"><?php echo $text_no_results; ?></td>

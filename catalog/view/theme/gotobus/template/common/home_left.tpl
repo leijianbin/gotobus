@@ -114,7 +114,7 @@ function drop_mouseover(pos){
 function drop_mouseout(pos){
  var posSel=document.getElementById(pos+"Sel").style.display;
  if(posSel=="block"){
-  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+  timer = setTimeout("drop_hide('"+pos+"')", 3000);
 }
 }
 function drop_hide(pos){
@@ -259,7 +259,7 @@ echo $filter_return_date;
 
     <ul class="selOption" id="passengerSel" style="display:none;">
 
-      <?php for ($i=1; $i<=10; $i++) {?>
+      <?php for ($i=1; $i<=20; $i++) {?>
      <li><a href="#" class="passengerOption" name="<?php echo $i;?>" <?php if(isset($passenger_no)) { if($i == $passenger_no) echo "selected"; }?>><?php echo $i;?></a></li>
      <?php }?>
    </ul>
