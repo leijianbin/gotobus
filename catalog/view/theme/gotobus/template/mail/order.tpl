@@ -114,7 +114,7 @@
     </tfoot>
   </table>
   <p style="font-weight: bold;">Please Print your E-ticket from following Link:</p>
-  <p style="font-size: 14px;"><a href="<?php echo $base;?>index.php?route=account/order/ticket_info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
+  <p style="font-size: 18px;"><a href="<?php echo $base;?>index.php?route=account/order/ticket_info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
 
   <p style="margin-top: 0px; margin-bottom: 20px;">Contact us at 1866-848-5888</p>
 </div>
