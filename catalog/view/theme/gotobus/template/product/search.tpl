@@ -1,19 +1,33 @@
 	<?php echo $header; ?>
 
 	<?php 
-
-	//print_r($category_id);
-	//print_r($category_arrival_id);
-	/*print "<pre>";
-	print_r($products);
-	print "</pre>";
-	print "</br>";
-
-	print "</br>";
-	print_r($search);
-	print "</br>";
-	print_r($categories);
-	*/
+	// print_r($category_id);
+	// print_r($category_arrival_id);
+	// print "<pre>";
+	// print_r($products);
+	// print "</pre>";
+	// print "</br>";
+	// print "<pre>";
+	// print_r($categories);
+	// print "</pre>";
+	// print "</br>";
+	
+	// get the departure and arrive name out of the categories.
+	foreach ($categories as $name) {
+		if($name['category_id'] == $category_id)
+		{
+			$departure = $name['name'];
+			//print "departure is";
+			print $departure;
+		}
+		if($name['category_id'] == $category_arrival_id)
+		{
+			$arrive = $name['name'];
+			//print "arrive is";
+			print $arrive;
+		}
+	}
+	
 	?>
 
 	<?php echo $column_left; ?>
@@ -61,7 +75,10 @@
 								echo date('D',$dt);
 						?>	
 						</p>
-						<p class="fontbold"><?php echo $line_name;?></p> 
+						<p class="fontbold"><?php echo $departure;
+												  echo " --> ";
+												  echo $arrive;	?>
+												</p> 
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -121,7 +138,9 @@
 								echo date('D',$dt);
 							?>
 							</p>
-							<p class="fontbold"><?php echo $line_name;?></p> 
+							<p class="fontbold"><?php echo $arrive;
+												  echo " --> ";
+												  echo $departure;?></p> 
 						</div>
 					</div>
 					<div class="clear"></div>
