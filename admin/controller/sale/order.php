@@ -2587,7 +2587,7 @@ class ControllerSaleOrder extends Controller {
 			$mail->setSubject("Your Order have been updated");
 			//$mail->setHtml($html);
 			$text =  "Thank you for your interest in Go to Bus Tour products. Your order has been updated and please print the new e-ticket with the link below.\n \n";
-			$text .= "http://yibadatech.com/gotobus/index.php?route=account/order/ticket_info&order_id=";
+			$text .= "http://busgonyc.com/index.php?route=account/order/ticket_info&order_id=";
 			$text .= $order_id;
 			$text .= "&confirm_no=";
 			$text .= $order_info['invoice_no'];

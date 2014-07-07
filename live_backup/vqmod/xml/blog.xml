@@ -1,0 +1,28 @@
+<modification>
+		<id>Add blog menu item</id>
+		<version>1.0.0</version>
+		<vqmver>2.x</vqmver>
+		<author>krafas</author>
+		<file name="admin/language/english/common/header.php">
+			<operation>
+				<search position="before"><![CDATA[$_['text_catalog']]]></search>
+				<add><![CDATA[$_['text_blog']                        = 'Blog';]]></add>
+			</operation>
+		</file>
+		<file name="admin/controller/common/header.php">
+			<operation>
+				<search position="before"><![CDATA[$this->data['text_catalog']]]></search>
+				<add><![CDATA[$this->data['text_blog'] = $this->language->get('text_blog');]]></add>
+			</operation>
+			<operation>
+				<search position="before"><![CDATA[$this->data['category']]]></search>
+				<add><![CDATA[$this->data['blog'] = $this->url->link('module/blog', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+			</operation>
+		</file>
+		<file name="admin/view/template/common/header.tpl">
+			<operation>
+				<search position="before"><![CDATA[<li id="help">]]></search>
+				<add><![CDATA[<li id="blog"><a href="<?php echo $blog; ?>" class="top"><?php echo $text_blog; ?></a></li> ]]></add>
+			</operation>
+		</file>
+</modification>

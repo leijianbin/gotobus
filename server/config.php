@@ -5,17 +5,17 @@ define('HTTP_IMAGE', 'http://nycsupermall.com/test/image/');
 define('HTTP_ADMIN', 'http://nycsupermall.com/test/admin/');
 */
 
-define('HTTP_SERVER', 'http://yibadatech.com/gotobus/');
+define('HTTP_SERVER', 'http://busgonyc.com/');
 define('HTTP_IMAGE', HTTP_SERVER.'image/');
 
-//define('HTTP_ADMIN', 'http://yibadatech.com/gotobus/admin/');
+//define('HTTP_ADMIN', 'http://busgonyc.com/admin/');
 define('HTTP_ADMIN', HTTP_SERVER.'admin/');
 
 // HTTPS
 /*define('HTTPS_SERVER', 'http://nycsupermall.com/test/');
 define('HTTPS_IMAGE', 'http://nycsupermall.com/test/image/');
 */
-define('HTTPS_SERVER', 'http://yibadatech.com/gotobus/');
+define('HTTPS_SERVER', 'http://busgonyc.com/');
 define('HTTPS_IMAGE', HTTPS_SERVER.'image/');
 
 

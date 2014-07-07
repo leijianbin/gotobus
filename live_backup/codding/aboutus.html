@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>GoToBusTour</title>
+<link href="css/general.css" type="text/css" rel="stylesheet" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link type="image/x-icon" rel="shortcut icon" href="http://www.yibada.com/clients/GoToBusTours/images/favicon.ico"/>
+<link href="images/favicon.ico" rel="shortcut icon">
+
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+
+
+<script>
+function drop_mouseover(pos){
+ try{window.clearTimeout(timer);}catch(e){}
+}
+function drop_mouseout(pos){
+ var posSel=document.getElementById(pos+"Sel").style.display;
+ if(posSel=="block"){
+  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+ }
+}
+function drop_hide(pos){
+ document.getElementById(pos+"Sel").style.display="none";
+}
+function search_show(pos,searchType,href){
+    document.getElementById(pos+"SearchType").value=searchType;
+    document.getElementById(pos+"Sel").style.display="none";
+    document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+    document.getElementById(pos+'q').focus();
+    var sE = document.getElementById("searchExtend");
+    if(sE != undefined  &&  searchType == "bar"){
+     sE.style.display="block";
+    }else if(sE != undefined){
+     sE.style.display="none";
+    }
+ try{window.clearTimeout(timer);}catch(e){}
+ return false;
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+    	<div class="header">
+        	<h1><a href=""><span class="displaynone">Go To Bus Tour</span></a></h1>
+            
+                <div class="headerright">
+            	<div class="headerinfo">
+                	<div class="limit">Tickets Only For Adults</div>
+                	<div class="tel">(646)-945-2092</div>                 
+                </div>
+                <div class="nav">
+                	<ul>
+                    	<li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                        <li><a href="busstation.html">Bus Station</a></li>
+                        <li><a href="busschedule.html">Bus Schedule</a></li>
+                        <li><a href="aboutus.html" class="current">About Us</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+<!-- Header End--> 
+
+    <div class="contentsubpage">
+    	<div class="searchbarside">
+        
+        <!-- Search Bar Start-->
+ 		
+<div class="wholesearchbarside">
+ 	<div class="subtickettitle">Bus Tickets</div>
+    <div class="subsearchbar">
+    	<div class="flight">
+        	<ol>
+                  <li class="radio1" style="float:left; height:20px;">
+                      <input type="radio" name="trip-type" />
+                      <label for"Round-trip"> &nbsp;Round-trip</label>
+                  </li>
+                  <li class="radio">
+                      <input type="radio" name="trip-type" />
+                      <label for"one-way">&nbsp;one-way</label>
+                  </li>
+                  <div class="clear"></div>
+            </ol>
+        </div>
+        <div class="clear"></div>
+        <div class="location">
+        	<div class="searchTool">
+            <label for="inadults">Departure City</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="headSearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch">
+   <div id="headSlected" class="nowSearch" onmouseout="" onclick=""></div>
+    </div>
+<div class="clear"></div>
+</form>
+   </div>
+  <div class="clear"></div>
+			<div class="searchTool searchtoolfloat1" style="margin-top:8px;">
+            <label for="inadults">Arrival City</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head2SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch">
+    <div id="head2Slected" class="nowSearch" onmouseout="" onclick=""></div>
+    </div>
+<div class="clear"></div>
+<div class="dashlinebox" style="margin-bottom:5px;"></div>
+</form>
+   </div>
+   		<div class="clear"></div>
+        </div>
+        <div class="departure">
+        	<div class="subdep1" style="width:100px; float:left;">
+                                <div>
+                                    <label id="" class="textLabel" for="Departure Date">Departure Date</label>
+                                </div>
+                                <div class="subdates">
+                                    <input class=" " type="text" name="" style="width:86px; height:20px;">
+                                    <label class="date-picker" for="from-date">dates</label>
+                                </div>
+                            </div>
+            <div class="searchTool searchtoolfloat1" style="float:left; width:87px;">
+             <label for="inadults"> &nbsp;Time</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head3SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch" style="width:91px; ">
+    <div id="head3Slected" class="nowSearch newsearch" onmouseout="" onclick=""></div>
+   
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+   			<div class="clear"></div>
+        </div>
+         <div class="return">
+        	<div class="subdep1" style="width:100px; float:left;">
+                                <div>
+                                    <label id="" class="textLabel" for="Departure Date">Departure Date</label>
+                                </div>
+                                <div class="subdates">
+                                    <input class=" " type="text" name="" style="width:86px; height:20px;">
+                                    <label class="date-picker" for="from-date">dates</label>
+                                </div>
+                            </div>
+            <div class="searchTool searchtoolfloat1" style="float:left; width:87px;">
+             <label for="inadults">Time</label><div class="clear"></div>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head4SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch" style="width:91px;">
+    <div id="head4Slected" class="nowSearch" onmouseout="" onclick=""></div>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+   
+   			<div class="clear"></div>
+            <div class="dashlinebox" style="margin-bottom:5px;"></div>
+        </div>
+        <div class="passenger">
+          <div class="searchTool">
+           <label for="inadults">Passengers NO.</label>
+<form method="get" action="http://so.youku.com/search_playlist" name="headSearchForm" id="headSearchForm" onsubmit="return dosearch(this);">
+   <!-- <input class="txtSearch" id="headq" name="q" type="text" value="闯关东" />  --> 
+     <input name="searchdomain" type="hidden" value="http://so.youku.com">
+   <input id="head5SearchType" name="searchType" type="hidden" value="playlist"> 
+     <div class="selSearch">
+    <div class="nowSearch" id="head5Slected" onclick="if(document.getElementById('head5Sel').style.display=='none'){document.getElementById('head5Sel').style.display='block';}else {document.getElementById('head5Sel').style.display='none';};return false;" onmouseout="drop_mouseout('head5');">1 <!--add  <div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+    <div class="clear"></div>  Add End--> </div>
+   
+    <ul class="selOption" id="head5Sel" style="display:none;">
+     <li><a href="#" onclick="return search_show('head5','video',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">2</a></li>
+     <li><a href="#" onclick="return search_show('head5','playlist',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">3</a></li>
+     <li><a href="#" onclick="return search_show('head5','user',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">4</a></li>
+     <li><a href="#" onclick="return search_show('head5','bar',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">5</a></li>
+     <li><a href="#" onclick="return search_show('head5','pk',this)" onmouseover="drop_mouseover('head5');" onmouseout="drop_mouseout('head5');">6</a></li>
+    </ul>
+     </div>
+<div class="clear"></div>
+</form>
+   </div>
+  	    <div class="subactions">
+			<a href="">SEARCH</a>
+    	</div>
+        </div>
+    </div>
+</div>
+		<!-- End -->
+        
+        </div>
+        <div class="subpageright">
+        	<div class="subpagebreadcrum">
+            	About Us
+            </div>
+           <div class="aboutuscon">
+           		<img src="images/img_aboutus.jpg" />
+           		<div class="aboutusintro">
+                Go To Bus Tour is a Chinatown bus company to provide bus service go around the cities in New York state. Today, scheduled services are operated from New York City to Syracuse, Rochester and Buffalo. The station in New York is conveniently located.
+</br></br>
+We offer the highest level of comfort and safety and look forward to serving you! You can be assured of a great experience and overall satisfaction when you choose New Century Travel Bus. Our professional staff, and our fleet of clean, comfortable, and well maintained equipment enable us to provide you with the dependable, quality service you expect.
+</br></br>
+is a Chinatown bus company to provide bus service go around the cities in New York state. Today, scheduled services are operated from New York City to Syracuse, Rochester and Buffalo. The station in New York is 
+conveniently located.
+
+      
+                
+                </div>
+                <div class="clear"></div>
+           </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+<!-- Footer Start -->
+<div class="graybg">
+        <div class="footer wrapper">
+        	<img src="images/carimg.png" />
+            <div class="footerbottom">
+        	<div class="footermenu">
+            	<ul>
+                	<li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="busschedule.html">Bus Schedules</a></li>
+                    <li><a href="busstation.html">Bus Station</a></li>
+                    <li><a href="ticketpolicy.html">Ticket Policy</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerright">
+            Copyright © 2008-2013 www.gotobustour.com All Rights Reserved. &nbsp;  &nbsp;&nbsp;&nbsp;    <a href="http://web.yibada.com"> Powered by YIBADA</a>
+            </div>
+            <div class="clear"></div>
+             </div>
+        </div>
+   
+</div>
+
+
+</body>
+</html>
+
+

@@ -1,13 +1,13 @@
 <?php
 // HTTP
 //define('HTTP_SERVER', 'http://localhost/opencart/gotobus/admin/');
-define('HTTP_SERVER', 'http://yibadatech.com/gotobus/admin/');
+define('HTTP_SERVER', 'http://busgonyc.com/admin/');
 
-define('HTTP_CATALOG', 'http://yibadatech.com/gotobus/');
+define('HTTP_CATALOG', 'http://busgonyc.com/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://yibadatech.com/gotobus/admin/');
-define('HTTPS_CATALOG', 'http://yibadatech.com/gotobus/');
+define('HTTPS_SERVER', 'http://busgonyc.com/admin/');
+define('HTTPS_CATALOG', 'http://busgonyc.com/');
 
 // DIR
 define('DIR_ROOT', realpath(dirname(__FILE__). '/..') . '/');

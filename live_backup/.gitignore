@@ -1,0 +1,13 @@
+#special 
+
+.DS_Store
+
+# Use wildcards as well
+
+*.swp
+config.php
+
+# Can also ignore all directories and files in a directory.
+
+tmp/**/* 
+
