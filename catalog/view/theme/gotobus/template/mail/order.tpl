@@ -7,6 +7,75 @@
 <body style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000;">
 <div style="width: 680px;"><a href="<?php echo $store_url; ?>" title="<?php echo $store_name; ?>"><img src="<?php echo $logo; ?>" alt="<?php echo $store_name; ?>" style="margin-bottom: 20px; border: none;" /></a>
   <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_greeting; ?></p>
+
+  <?php
+    if(count($productId) == 2)
+        $roundTrip = true;
+    else 
+        $roundTrip = false;
+
+    $departure_tickets = array();
+    foreach ($d_tickets as $product) {
+      foreach ($d_tickets_option as $orderOption) {
+        $departure_tickets[] = array(
+          'name'     => $product['name'],
+          'model'    => $product['model'],
+          'price'    => $orderOption['price'], 
+          'departure_date'    => $orderOption['departure_date'],
+          'departure_time'    => $product['departure_time'],
+          'arrive_time'    => $product['arrive_time'],
+          'arrive_station'    => $product['arrive_station'],
+          'departure_station' => $product['departure_station'],
+          'customer'      => $orderOption['customer'],
+          'confirm_no'      => $orderOption['confirm_no'],
+          'status'    => $orderOption['status']
+          );
+      }
+    }
+    if($roundTrip)
+    {
+      $arrive_tickets = array();
+      foreach ($a_tickets as $product) {
+        foreach ($a_tickets_option as $orderOption) {
+          $arrive_tickets[] = array(
+            'name'     => $product['name'],
+            'model'    => $product['model'],
+            'price'    => $orderOption['price'], 
+            'departure_date'    => $orderOption['departure_date'],
+            'departure_time'    => $product['departure_time'],
+            'arrive_time'    => $product['arrive_time'],
+            'arrive_station'    => $product['arrive_station'],
+            'departure_station' => $product['departure_station'],
+            'customer'      => $orderOption['customer'],
+            'confirm_no'      => $orderOption['confirm_no'],
+            'status'    => $orderOption['status']
+            );
+        }
+      }
+    }
+    // print "<pre>";
+    // print_r($d_tickets);
+    // print "</pre>"; 
+    // print "<pre>";
+    // print_r($d_tickets_option);
+    // print "</pre>"; 
+    // print "<pre>";
+    // print_r($departure_tickets);
+    // print "</pre>"; 
+    // print "<pre>";
+    // print_r($a_tickets);
+    // print "</pre>"; 
+    // print "<pre>";
+    // print_r($a_tickets_option);
+    // print "</pre>"; 
+    // print "<pre>";
+    // print_r($arrive_tickets);
+    // print "</pre>"; 
+    //print_r($productId);
+    //echo " " . count($productId) . " ";
+
+  ?>
+
   <?php if ($customer_id) { ?>
   <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_link; ?></p>
   <p style="margin-top: 0px; margin-bottom: 20px;"><a href="<?php echo $link; ?>"><?php echo $link; ?></a></p>
@@ -94,15 +163,6 @@
         <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $product['total']; ?></td>
       </tr>
       <?php } ?>
-      <?php foreach ($vouchers as $voucher) { ?>
-      <tr>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><?php echo $voucher['description']; ?></td>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"></td>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;">1</td>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $voucher['amount']; ?></td>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $voucher['amount']; ?></td>
-      </tr>
-      <?php } ?>
     </tbody>
     <tfoot>
       <?php foreach ($totals as $total) { ?>
@@ -113,6 +173,41 @@
       <?php } ?>
     </tfoot>
   </table>
+  <p style="font-weight: bold;">Your Departure Tickets</p>
+
+    <?php foreach ($departure_tickets as $product) {
+            ?>
+            <div class="box3">
+              <ul>
+                    <li class="tiketdet"><span>Customer : </span><?php echo $product['customer'];?></li>
+                    <li class="tiketdet"><span>Confirmation Number :</span> <?php echo $product['confirm_no'];?></li>
+                    <li class="tiketdet"><span>Bus Route : </span><?php echo $product['name']?> (Schedule lD: <?php echo $product['model']?>)</li>
+                    <li class="tiketdet"><span>Date :</span> <?php echo $product['departure_date'];?></li>
+                    <li class="tiketdet"><span>Departure :</span> (<?php echo $product['departure_time'];?> <?php echo $product['departure_station'];?>)</li>
+                    <li class="tiketdet"><span>Arrival :</span> (<?php echo $product['arrive_time'];?> <?php echo $product['arrive_station'];?>)</li>
+                    <li class="tiketdet"><span>Status : </span><?php echo $product['status'];?></li>
+                </ul>
+            </div></br></br>
+    <?php }?>
+
+<?php if($roundTrip) {?>
+  <p style="font-weight: bold;">Your Return Tickets</p>
+  <?php foreach ($arrive_tickets as $product) {
+            ?>
+            <div class="box3">
+              <ul>
+                    <li class="tiketdet"><span>Customer : </span><?php echo $product['customer'];?></li>
+                    <li class="tiketdet"><span>Confirmation Number :</span> <?php echo $product['confirm_no'];?></li>
+                    <li class="tiketdet"><span>Bus Route : </span><?php echo $product['name']?> (Schedule lD: <?php echo $product['model']?>)</li>
+                    <li class="tiketdet"><span>Date :</span> <?php echo $product['departure_date'];?></li>
+                    <li class="tiketdet"><span>Departure :</span> (<?php echo $product['departure_time'];?> <?php echo $product['departure_station'];?>)</li>
+                    <li class="tiketdet"><span>Arrival :</span> (<?php echo $product['arrive_time'];?> <?php echo $product['arrive_station'];?>)</li>
+                    <li class="tiketdet"><span>Status : </span><?php echo $product['status'];?></li>
+                </ul>
+            </div></br></br>
+    <?php }?>
+<?php }?>
+  
   <p style="font-weight: bold;">Please Print your E-ticket from following Link:</p>
   <p style="font-size: 18px;"><a href="<?php echo $base;?>index.php?route=account/order/ticket_info&order_id=<?php echo $order_id;?>&confirm_no=<?php echo $confirm_no;?>" target="_blank">View and Print your E-tickets.</a></p>
 

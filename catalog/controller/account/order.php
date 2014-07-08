@@ -9,7 +9,6 @@ class ControllerAccountOrder extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
     	}
     	*/
-		
 		$this->language->load('account/order');
 		
 		$this->load->model('account/order');
@@ -413,38 +412,8 @@ class ControllerAccountOrder extends Controller {
 			$this->data['products'] = array();
 			
 			$products = $this->model_account_order->getOrderProductDetail($this->request->get['order_id'],$this->request->get['product_id']);
-			//$productTypeNum = $this->model_account_order->getOrderProductsType($this->request->get['order_id']);
-
-			/*if($productTypeNum == 2)
-			{	
-				$roundTrip = True;
-			}
-			else
-			{
-				$roundTrip = False;
-			}
-			
-			echo (int)$roundTrip;
-			*/
 
       		foreach ($products as $product) {
-				/*$option_data = array();
-				
-				$options = $this->model_account_order->getOrderOptions($this->request->get['order_id'], $product['order_product_id']);
-
-         		foreach ($options as $option) {
-          		
-          			if ($option['type'] != 'file') {
-						$value = $option['value'];
-					} else {
-						$value = utf8_substr($option['value'], 0, utf8_strrpos($option['value'], '.'));
-					}
-					
-					$option_data[] = array(
-						'name'  => $option['name'],
-						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
-					);					
-        		}*/
 
         		$orderOptions = $this->model_account_order->getOrderProduct($this->request->get['order_id'], $this->request->get['product_id']);
 

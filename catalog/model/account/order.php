@@ -243,7 +243,9 @@ class ModelAccountOrder extends Model {
 	public function getOrderProductDetail($order_id,$product_id) {
 
 		//$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
-		$query = $this->db->query("SELECT * FROM product p, product_description pd WHERE p.product_id = pd.product_id AND p.product_id in ("."SELECT product_id FROM " . DB_PREFIX . "order_product WHERE product_id= '". (int)$product_id. "' AND order_id = '" . (int)$order_id . "')");
+		$query_string = "SELECT * FROM product p, product_description pd WHERE p.product_id = pd.product_id AND p.product_id in ("."SELECT product_id FROM " . DB_PREFIX . "order_product WHERE product_id= '". (int)$product_id. "' AND order_id = '" . (int)$order_id . "')";
+		print_r($query_string);
+		$query = $this->db->query($query_string);
 		return $query->rows;
 	}
 	
